@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [Header("References"),SerializeField]
+    [Header("References"), SerializeField]
     private GameObject scope;
     [SerializeField]
     private Gun equippedGun;
@@ -94,7 +94,7 @@ public class Player : MonoBehaviour
             gamePadWasUsed = true;
             scope.transform.position = gun.transform.position + new Vector3(Input.GetAxis("HorizontalAim") * scopeDistance, 0, Input.GetAxis("VerticalAim") * scopeDistance);
             gun.transform.LookAt(scope.transform);
-            if(gun.transform.eulerAngles.y > 0 && gun.transform.eulerAngles.y < 180)
+            if (gun.transform.eulerAngles.y > 0 && gun.transform.eulerAngles.y < 180)
             {
                 gun.transform.localScale = new Vector3(-1, 1, 1);
             }
@@ -125,23 +125,28 @@ public class Player : MonoBehaviour
             {
                 scope.transform.position = mousePos;
             }
-            
-            gun.transform.LookAt(scope.transform);
-            if (gun.transform.eulerAngles.y > 0 && gun.transform.eulerAngles.y < 180)
-            {
-                transform.localScale = new Vector3(-1, 1, 1);
-            }
-            else
-            {
-                transform.localScale = new Vector3(1, 1, 1);
-            }
         }
         else if (Input.GetAxis("HorizontalAim") == 0 && Input.GetAxis("VerticalAim") == 0)
         {
             scope.transform.position = transform.position;
         }
+        gun.transform.LookAt(scope.transform);
+
+        if (scope.transform.position.x > transform.position.x)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+
+        
     }
-    private void ProcessShooting()
+
+
+
+        private void ProcessShooting()
     {
         if (Input.GetAxis("Fire1") > 0 && gunReady)
         {
