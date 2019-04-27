@@ -41,11 +41,11 @@ public class ShootAction : EnemyActions
 
                 if (enemy.Gun.transform.eulerAngles.y > 0 && enemy.Gun.transform.eulerAngles.y < 180)
                 {
-                    enemy.Gun.transform.localScale = new Vector3(-1, 1, 1);
+                    enemy.transform.localScale = new Vector3(-1, 1, 1);
                 }
                 else
                 {
-                    enemy.Gun.transform.localScale = new Vector3(1, 1, 1);
+                    enemy.transform.localScale = new Vector3(1, 1, 1);
                 }
             }
         }

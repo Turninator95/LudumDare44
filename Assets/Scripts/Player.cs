@@ -129,11 +129,11 @@ public class Player : MonoBehaviour
             gun.transform.LookAt(scope.transform);
             if (gun.transform.eulerAngles.y > 0 && gun.transform.eulerAngles.y < 180)
             {
-                gun.transform.localScale = new Vector3(-1, 1, 1);
+                transform.localScale = new Vector3(-1, 1, 1);
             }
             else
             {
-                gun.transform.localScale = new Vector3(1, 1, 1);
+                transform.localScale = new Vector3(1, 1, 1);
             }
         }
         else if (Input.GetAxis("HorizontalAim") == 0 && Input.GetAxis("VerticalAim") == 0)
