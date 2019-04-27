@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public string ignoreTag;
     public float speed = 1;
     public int damage = 1;
     // Start is called before the first frame update
@@ -25,32 +26,32 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.tag != ignoreTag)
         {
-            other.gameObject.GetComponent<Player>().ProcessDamage(damage);
+            if (other.tag == "Player")
+            {
+                other.gameObject.GetComponent<Player>().ProcessDamage(damage);
+                Destroy(gameObject);
+            }
+
+            else if (other.tag == "Enemy")
+            {
+                other.gameObject.GetComponent<Enemy>().ProcessDamage(damage);
+                Destroy(gameObject);
+            }
+
+            else if (other.tag == "Bullet")
+            {
+                return;
+            }
+
+            else if (other.tag == "Block")
+            {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().ProcessDamage(-damage);
+                Destroy(gameObject);
+            }
+
             Destroy(gameObject);
         }
-
-        else if (other.gameObject.tag == "Enemy")
-        {
-            other.gameObject.GetComponent<Enemy>().ProcessDamage(damage);
-            Destroy(gameObject);
-        }
-
-        else if (other.gameObject.tag == "Bullet")
-        {
-            return;
-        }
-
-        else if (other.gameObject.tag == "Block")
-        {
-            other.gameObject.GetComponent<Player>().ProcessDamage(-damage);
-            Destroy(gameObject);
-        }
-
-        Destroy(gameObject);
     }
-
-
-
 }

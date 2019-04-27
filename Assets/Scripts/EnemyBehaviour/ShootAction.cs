@@ -29,7 +29,9 @@ public class ShootAction : EnemyActions
 
                 if (enemy.CurrentAmmo - enemy.EquippedGun.CostPerShot > 0)
                 {
-                    Instantiate(enemy.EquippedGun.Projectile, enemy.Gun.transform.GetChild(1).transform.position, enemy.Gun.transform.rotation).GetComponent<Bullet>().speed = enemy.EquippedGun.ProjectileSpeed;
+                    Bullet bullet = Instantiate(enemy.EquippedGun.Projectile, enemy.Gun.transform.GetChild(1).transform.position, enemy.Gun.transform.rotation).GetComponent<Bullet>();
+                    bullet.speed = enemy.EquippedGun.ProjectileSpeed;
+                    bullet.ignoreTag = enemy.tag;
                     enemy.CurrentAmmo -= enemy.EquippedGun.CostPerShot;
                     Debug.Log($"{enemy.name} has {enemy.CurrentAmmo} ammo left.");
                 }
