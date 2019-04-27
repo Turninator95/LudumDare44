@@ -34,6 +34,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        gun.GetComponentInChildren<SpriteRenderer>().sprite = equippedGun.GunSprite;
         actionIndex = 0;
         currentAmmo = initialAmmo;
     }

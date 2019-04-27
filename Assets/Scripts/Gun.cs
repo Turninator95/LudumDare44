@@ -17,5 +17,6 @@ public class Gun : ScriptableObject
     public int CostPerShot { get => costPerShot; set => costPerShot = value; }
     public GameObject Projectile { get => projectile; set => projectile = value; }
     public int ProjectileSpeed { get => projectileSpeed; set => projectileSpeed = value; }
+    public Sprite GunSprite { get => gunSprite; set => gunSprite = value; }
     #endregion
 }
