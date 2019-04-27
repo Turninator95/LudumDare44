@@ -25,12 +25,14 @@ public class Player : MonoBehaviour
 
 
     private Rigidbody rigidbody;
-    private GameObject blockObject; 
+    private GameObject blockObject;
+    ScreenShaker screenShaker;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        screenShaker = Camera.main.GetComponent<ScreenShaker>();
         currentAmmo = initialAmmo;
         rigidbody = gameObject.GetComponent<Rigidbody>();
         blockObject = GameObject.Find("BlockObj");
@@ -97,6 +99,8 @@ public class Player : MonoBehaviour
                 bulletFired = true;
                 StartCoroutine(ResetBulletFired());
                 currentAmmo -= costPerShot;
+                screenShaker.strength += 0.1f;
+                screenShaker.duration += 0.05f;
                 Debug.Log(currentAmmo);
             }
         }
