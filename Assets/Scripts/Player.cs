@@ -25,16 +25,9 @@ public class Player : MonoBehaviour
         {
             scope.transform.position = transform.position + new Vector3(Input.GetAxis("HorizontalAim"), 0, Input.GetAxis("VerticalAim"));
 
+            gun.transform.LookAt(scope.transform);
+            gun.transform.rotation = Quaternion.Euler(90, gun.transform.rotation.eulerAngles.y, gun.transform.rotation.eulerAngles.z);
 
-            //Vector3 diff = scope.transform.position - transform.position;
-            //diff.Normalize();
-
-            //float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-            //gun.transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
-
-
-            //gun.transform.LookAt(scope.transform);
-            //gun.transform.rotation = Quaternion.Euler(0, 0, gun.transform.rotation.eulerAngles.x);
         }
         else if (Input.GetAxis("HorizontalAim") == 0 && Input.GetAxis("VerticalAim") == 0)
         {
