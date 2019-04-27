@@ -150,10 +150,6 @@ public class Player : MonoBehaviour
         {
             scope.transform.position = transform.position;
         }
-        
-
-
-        
     }
 
 
@@ -181,7 +177,7 @@ public class Player : MonoBehaviour
                 ProcessDamage(costPerShot);
                 screenShaker.strength += equippedGun.ScreenShakeStrength;
                 screenShaker.duration += equippedGun.ScreenShakeDuration;
-                Debug.Log(currentAmmo);
+                Debug.Log($"{name} has {currentAmmo} ammo left.");
             }
         }
         else if (Input.GetAxis("Fire1") == 0)
