@@ -135,9 +135,10 @@ public class Player : MonoBehaviour
                 bullet.ignoreTag = tag;
                 bullet.audioClip = equippedGun.SoundEffect;
 
-                if (!equippedGun.AutomaticFire)
+                gunReady = false;
+
+                if (equippedGun.AutomaticFire)
                 {
-                    gunReady = false;
                     fireTimeout = (float)1 / equippedGun.ShotsPerSecond; 
                     StartCoroutine(ResetBulletFired());
                 }

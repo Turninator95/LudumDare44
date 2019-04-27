@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Revolver
   m_EditorClassIdentifier: 
   costPerShot: 1
+  shotsPerSecond: 5
   projectileSpeed: 1
   projectileDamage: 1
   projectile: {fileID: 1094163864691010628, guid: f84e232caa031d24893f0772c545b087,
@@ -21,4 +22,4 @@ MonoBehaviour:
   screenShakeStrength: 0.1
   screenShakeDuration: 0.05
   soundEffect: {fileID: 8300000, guid: fb9ece8962fb0e145bfd57caf945a3cf, type: 3}
-  automaticFire: 0
+  automaticFire: 1
