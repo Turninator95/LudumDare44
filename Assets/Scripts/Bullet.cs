@@ -25,14 +25,18 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "player")
+        if (other.gameObject.tag == "Player")
         {
             other.gameObject.GetComponent<Player>().ProcessDamage(damage);
             Destroy(gameObject);
-        }else if (other.gameObject.tag == "enemy")
-        {
-
         }
+
+        else if (other.gameObject.tag == "Enemy")
+        {
+            other.gameObject.GetComponent<Enemy>().ProcessDamage(damage);
+            Destroy(gameObject);
+        }
+
         Destroy(gameObject);
     }
 

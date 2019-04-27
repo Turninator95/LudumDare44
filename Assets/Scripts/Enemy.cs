@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
     private int initialAmmo = 20;
     [SerializeField]
     private int maxAmmo = 100;
-    private int currentAmmo;
+    public int currentAmmo;
     private bool timeoutActive = false;
 
 
@@ -66,4 +66,15 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(actionTimeout);
         timeoutActive = false;
     }
+
+    public void ProcessDamage(int damage)
+    {
+        currentAmmo -= damage;
+        if (currentAmmo <= 0)
+        {
+            Debug.Log("it ded");
+        }
+
+    }
+
 }
