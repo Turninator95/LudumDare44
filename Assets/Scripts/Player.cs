@@ -29,24 +29,15 @@ public class Player : MonoBehaviour
     private ScreenShaker screenShaker;
     private bool gamePadWasUsed = false;
     private AudioSource audioSource;
+    private HealthBar healthBar;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-        screenShaker = Camera.main.GetComponent<ScreenShaker>();
-        if (screenShaker == null)
-        {
-            screenShaker = Camera.main.gameObject.AddComponent<ScreenShaker>();
-        }
         currentAmmo = initialAmmo;
-        rigidbody = gameObject.GetComponent<Rigidbody>();
-        blockObject = GameObject.Find("BlockObj");
-        if (scope == null)
-        {
-            scope = GameObject.Find("Scope");
-        }
+        FindReferences();
+        UpdateHealthBar();
         gun.GetComponentInChildren<SpriteRenderer>().sprite = equippedGun.GunSprite;
     }
 
@@ -62,6 +53,33 @@ public class Player : MonoBehaviour
         {
             Debug.Log("YOU DED SON");
         }
+    }
+
+    private void FindReferences()
+    {
+        healthBar = FindObjectOfType<HealthBar>();
+
+        audioSource = GetComponent<AudioSource>();
+        screenShaker = Camera.main.GetComponent<ScreenShaker>();
+
+        if (screenShaker == null)
+        {
+            screenShaker = Camera.main.gameObject.AddComponent<ScreenShaker>();
+        }
+
+        rigidbody = gameObject.GetComponent<Rigidbody>();
+        blockObject = GameObject.Find("BlockObj");
+        if (scope == null)
+        {
+            scope = GameObject.Find("Scope");
+        }
+    }
+
+    private void UpdateHealthBar()
+    {
+        healthBar.maxHealth = maxAmmo;
+        healthBar.health = currentAmmo;
+        healthBar.shotDamage = equippedGun.CostPerShot;
     }
 
     private void ProcessMovementInput()
@@ -143,7 +161,6 @@ public class Player : MonoBehaviour
                     StartCoroutine(ResetBulletFired());
                 }
 
-                
                 ProcessDamage(costPerShot);
                 screenShaker.strength += equippedGun.ScreenShakeStrength;
                 screenShaker.duration += equippedGun.ScreenShakeDuration;
@@ -189,6 +206,9 @@ public class Player : MonoBehaviour
         audioSource.pitch *= Random.Range(0.8f, 1.2f);
         audioSource.Play();
         currentAmmo -= damage;
+
+        UpdateHealthBar();
+
         if (currentAmmo <= 0)
         {
             Debug.Log("We ded");
