@@ -37,7 +37,20 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
 
+        else if (other.gameObject.tag == "Bullet")
+        {
+            return;
+        }
+
+        else if (other.gameObject.tag == "Block")
+        {
+            other.gameObject.GetComponent<Player>().ProcessDamage(-damage);
+            Destroy(gameObject);
+        }
+
         Destroy(gameObject);
     }
+
+
 
 }
