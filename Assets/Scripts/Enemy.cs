@@ -90,7 +90,9 @@ public class Enemy : MonoBehaviour
         currentAmmo -= damage;
         if (currentAmmo <= 0)
         {
+            
             Debug.Log("it ded");
+            Destroy(gameObject);
         }
 
     }
