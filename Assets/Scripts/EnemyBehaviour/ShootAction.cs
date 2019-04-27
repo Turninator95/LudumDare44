@@ -39,14 +39,7 @@ public class ShootAction : EnemyActions
                     Debug.Log($"{enemy.name} has {enemy.CurrentAmmo} ammo left.");
                 }
 
-                if (enemy.Gun.transform.eulerAngles.y > 0 && enemy.Gun.transform.eulerAngles.y < 180)
-                {
-                    enemy.transform.localScale = new Vector3(-1, 1, 1);
-                }
-                else
-                {
-                    enemy.transform.localScale = new Vector3(1, 1, 1);
-                }
+                
             }
         }
         enemy.ActionCompleted();

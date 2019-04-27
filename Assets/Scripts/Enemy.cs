@@ -26,6 +26,8 @@ public class Enemy : MonoBehaviour
     private AudioSource audioSource;
     private GameManager gameManager;
 
+    GameObject player;
+
     #region Properties
     public float MovementSpeed { get => movementSpeed; set => movementSpeed = value; }
     public int CurrentAmmo { get => currentAmmo; set => currentAmmo = value; }
@@ -41,6 +43,7 @@ public class Enemy : MonoBehaviour
         gun.GetComponentInChildren<SpriteRenderer>().sprite = equippedGun.GunSprite;
         actionIndex = 0;
         currentAmmo = initialAmmo;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
@@ -48,6 +51,15 @@ public class Enemy : MonoBehaviour
         if (!timeoutActive)
         {
             actions[actionIndex].Execute(this);
+        }
+        gun.transform.LookAt(player.transform);
+        if (player.transform.position.x > transform.position.x)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else
+        {
+            transform.localScale = new Vector3(1, 1, 1);
         }
     }
 
