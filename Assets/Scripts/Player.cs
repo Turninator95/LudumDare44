@@ -183,7 +183,7 @@ public class Player : MonoBehaviour
     }
     public void ProcessDamage(int damage)
     {
-        audioSource.pitch *= Random.Range(0.8f, 1.4f);
+        audioSource.pitch *= Random.Range(0.8f, 1.2f);
         audioSource.Play();
         currentAmmo -= damage;
         if (currentAmmo <= 0)

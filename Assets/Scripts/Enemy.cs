@@ -70,7 +70,7 @@ public class Enemy : MonoBehaviour
 
     public void ProcessDamage(int damage)
     {
-        //audioSource.pitch *= Random.Range(0.5f, 2.0f);
+        audioSource.pitch *= Random.Range(0.8f, 1.2f);
         audioSource.Play();
         currentAmmo -= damage;
         if (currentAmmo <= 0)

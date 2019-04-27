@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        audioSource.pitch *= Random.Range(0.5f, 2.0f); 
+        audioSource.pitch *= Random.Range(1.0f, 1.5f); 
         audioSource.PlayOneShot(audioClip);
     }
 
