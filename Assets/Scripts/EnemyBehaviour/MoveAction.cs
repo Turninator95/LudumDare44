@@ -7,6 +7,7 @@ public class MoveAction : EnemyActions
 {
     [SerializeField]
     private float moveDistance;
+    private Vector3 movementDirection;
     private Vector3 startPosition;
     private bool startPositionSet = false;
     private Rigidbody rigidbody;
@@ -21,11 +22,21 @@ public class MoveAction : EnemyActions
         if (startPositionSet == false)
         {
             startPosition = rigidbody.position;
+            movementDirection = Quaternion.Euler(0, Random.Range(-180, 181), 0) * enemy.transform.forward;
             startPositionSet = true;
         }
         if (Vector3.Distance(startPosition, enemy.transform.position) < moveDistance)
         {
-            rigidbody.velocity = enemy.transform.forward  * enemy.MovementSpeed;
+            Debug.DrawRay(enemy.transform.position, movementDirection);
+            rigidbody.velocity = movementDirection * enemy.MovementSpeed;
+            RaycastHit raycastHit;
+            if (Physics.Raycast(enemy.transform.position, movementDirection, out raycastHit, 1f))
+            {
+                if (raycastHit.collider.tag != "Player" && raycastHit.collider.tag != "Enemy")
+                {
+                    movementDirection = Quaternion.Euler(0, Random.Range(-180, 181), 0) * enemy.transform.forward;
+                }
+            }
         }
         else
         {
