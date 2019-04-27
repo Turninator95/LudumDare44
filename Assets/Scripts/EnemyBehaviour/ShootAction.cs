@@ -25,13 +25,22 @@ public class ShootAction : EnemyActions
             {
                 Debug.Log("I'd like to shoot the sheriff!");
 
-                enemy.transform.LookAt(player.transform);
+                enemy.Gun.transform.LookAt(player.transform);
 
                 if (enemy.CurrentAmmo - enemy.EquippedGun.CostPerShot > 0)
                 {
-                    Instantiate(enemy.EquippedGun.Projectile, enemy.Gun.transform.GetChild(1).transform.position, enemy.transform.rotation).GetComponent<Bullet>().speed = enemy.EquippedGun.ProjectileSpeed;
+                    Instantiate(enemy.EquippedGun.Projectile, enemy.Gun.transform.GetChild(1).transform.position, enemy.Gun.transform.rotation).GetComponent<Bullet>().speed = enemy.EquippedGun.ProjectileSpeed;
                     enemy.CurrentAmmo -= enemy.EquippedGun.CostPerShot;
                     Debug.Log($"{enemy.name} has {enemy.CurrentAmmo} ammo left.");
+                }
+
+                if (enemy.Gun.transform.eulerAngles.y > 0 && enemy.Gun.transform.eulerAngles.y < 180)
+                {
+                    enemy.Gun.transform.localScale = new Vector3(-1, 1, 1);
+                }
+                else
+                {
+                    enemy.Gun.transform.localScale = new Vector3(1, 1, 1);
                 }
             }
         }

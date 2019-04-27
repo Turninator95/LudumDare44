@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private int maxAmmo = 100;
     private int currentAmmo;
-    private bool pause = false;
+    private bool timeoutActive = false;
 
 
     #region Properties
@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (!pause)
+        if (!timeoutActive)
         {
             actions[actionIndex].Execute(this);
         }
@@ -56,13 +56,13 @@ public class Enemy : MonoBehaviour
         {
             actionIndex = 0;
         }
-        pause = true;
-        StartCoroutine(ResetPause());
+        timeoutActive = true;
+        StartCoroutine(ResetTimeout());
     }
 
-    private IEnumerator ResetPause()
+    private IEnumerator ResetTimeout()
     {
         yield return new WaitForSeconds(actionTimeout);
-        pause = false;
+        timeoutActive = false;
     }
 }

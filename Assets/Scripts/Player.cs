@@ -84,7 +84,6 @@ public class Player : MonoBehaviour
             {
                 gun.transform.localScale = new Vector3(1, 1, 1);
             }
-            //gun.transform.rotation = Quaternion.Euler(90, gun.transform.rotation.eulerAngles.y, gun.transform.rotation.eulerAngles.z);
 
         }
         else if (Input.GetAxis("HorizontalAim") == 0 && Input.GetAxis("VerticalAim") == 0)
