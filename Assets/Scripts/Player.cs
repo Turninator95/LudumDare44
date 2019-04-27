@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
     private bool gamePadWasUsed = false;
     private AudioSource audioSource;
     private HealthBar healthBar;
+    private GameManager gameManager;
 
 
     // Start is called before the first frame update
@@ -51,12 +52,14 @@ public class Player : MonoBehaviour
 
         if (currentAmmo <= 0)
         {
+            Destroy(gameObject);
             Debug.Log("YOU DED SON");
         }
     }
 
     private void FindReferences()
     {
+        gameManager = FindObjectOfType<GameManager>();
         healthBar = FindObjectOfType<HealthBar>();
 
         audioSource = GetComponent<AudioSource>();
@@ -226,5 +229,10 @@ public class Player : MonoBehaviour
         {
             Debug.Log("We ded");
         }
+    }
+
+    private void OnDestroy()
+    {
+        gameManager.GameOver();
     }
 }
