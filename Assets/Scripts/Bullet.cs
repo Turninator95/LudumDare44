@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class Bullet : MonoBehaviour
 {
     public string ignoreTag;
     public float speed = 1;
     public int damage = 1;
+    public AudioClip audioClip;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        GetComponent<AudioSource>().PlayOneShot(audioClip);
     }
 
     // Update is called once per frame

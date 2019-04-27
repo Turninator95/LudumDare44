@@ -132,12 +132,13 @@ public class Player : MonoBehaviour
                 bullet.damage = equippedGun.ProjectileDamage;
                 bullet.speed = equippedGun.ProjectileSpeed;
                 bullet.ignoreTag = tag;
+                bullet.audioClip = equippedGun.SoundEffect;
 
                 bulletFired = true;
                 StartCoroutine(ResetBulletFired());
                 ProcessDamage(costPerShot);
-                screenShaker.strength += 0.1f;
-                screenShaker.duration += 0.05f;
+                screenShaker.strength += equippedGun.ScreenShakeStrength;
+                screenShaker.duration += equippedGun.ScreenShakeDuration;
                 Debug.Log(currentAmmo);
             }
         }

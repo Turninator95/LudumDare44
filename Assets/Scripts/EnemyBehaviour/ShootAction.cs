@@ -33,6 +33,8 @@ public class ShootAction : EnemyActions
                     bullet.speed = enemy.EquippedGun.ProjectileSpeed;
                     bullet.ignoreTag = enemy.tag;
                     bullet.damage = enemy.EquippedGun.ProjectileDamage;
+                    //bullet.audioSource.clip = enemy.EquippedGun.SoundEffect;
+                    bullet.audioClip = enemy.EquippedGun.SoundEffect;
                     enemy.CurrentAmmo -= enemy.EquippedGun.CostPerShot;
                     Debug.Log($"{enemy.name} has {enemy.CurrentAmmo} ammo left.");
                 }
