@@ -22,13 +22,14 @@ public class Player : MonoBehaviour
     private int currentAmmo;
 
 
-
+    private Rigidbody rigidbody;
 
 
     // Start is called before the first frame update
     void Start()
     {
         currentAmmo = initialAmmo;
+        rigidbody = gameObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -46,10 +47,11 @@ public class Player : MonoBehaviour
 
     private void ProcessMovementInput()
     {
-        transform.position = transform.position + 
-            new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) 
-            * Time.deltaTime 
-            * runningSpeed;
+        
+        rigidbody.velocity = 
+            new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"))
+             * runningSpeed;
+
     }
     private void ProcessAimingInput()
     {
