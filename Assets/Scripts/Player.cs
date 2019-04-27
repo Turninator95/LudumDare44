@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
         {
             if (currentAmmo - costPerShot > 0)
             {
-                Instantiate(bullet, gun.transform.position, gun.transform.rotation).GetComponent<Bullet>().speed = bulletSpeed;
+                Instantiate(bullet, gun.transform.GetChild(1).transform.position, gun.transform.rotation).GetComponent<Bullet>().speed = bulletSpeed;
 
                 bulletFired = true;
                 StartCoroutine(ResetBulletFired());
