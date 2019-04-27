@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
     private int maxAmmo = 100;
     public int currentAmmo;
     private bool timeoutActive = false;
-
+    private AudioSource audioSource;
 
     #region Properties
     public float MovementSpeed { get => movementSpeed; set => movementSpeed = value; }
@@ -34,6 +34,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         gun.GetComponentInChildren<SpriteRenderer>().sprite = equippedGun.GunSprite;
         actionIndex = 0;
         currentAmmo = initialAmmo;
@@ -69,6 +70,8 @@ public class Enemy : MonoBehaviour
 
     public void ProcessDamage(int damage)
     {
+        //audioSource.pitch *= Random.Range(0.5f, 2.0f);
+        audioSource.Play();
         currentAmmo -= damage;
         if (currentAmmo <= 0)
         {
@@ -76,5 +79,4 @@ public class Enemy : MonoBehaviour
         }
 
     }
-
 }

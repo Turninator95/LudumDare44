@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField, Range(1.0f, 20.0f)]
     [Header("Variables")]
     private float runningSpeed = 1;
-    private bool bulletFired = false;
+    private bool gunReady = true;
     [SerializeField]
     private float fireTimeout = 5f;
     [SerializeField]
@@ -28,11 +28,13 @@ public class Player : MonoBehaviour
     private GameObject blockObject;
     private ScreenShaker screenShaker;
     private bool gamePadWasUsed = false;
+    private AudioSource audioSource;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         screenShaker = Camera.main.GetComponent<ScreenShaker>();
         if (screenShaker == null)
         {
@@ -72,8 +74,7 @@ public class Player : MonoBehaviour
         if (Input.GetAxis("HorizontalAim") != 0 || Input.GetAxis("VerticalAim") != 0)
         {
             gamePadWasUsed = true;
-            scope.transform.position = gun.transform.position + 
-                new Vector3(Input.GetAxis("HorizontalAim") * scopeDistance, 0, Input.GetAxis("VerticalAim") * scopeDistance);
+            scope.transform.position = gun.transform.position + new Vector3(Input.GetAxis("HorizontalAim") * scopeDistance, 0, Input.GetAxis("VerticalAim") * scopeDistance);
             gun.transform.LookAt(scope.transform);
             if(gun.transform.eulerAngles.y > 0 && gun.transform.eulerAngles.y < 180)
             {
@@ -124,7 +125,7 @@ public class Player : MonoBehaviour
     }
     private void ProcessShooting()
     {
-        if (Input.GetAxis("Fire1") > 0 && !bulletFired)
+        if (Input.GetAxis("Fire1") > 0 && gunReady)
         {
             if (currentAmmo - costPerShot > 0)
             {
@@ -134,13 +135,21 @@ public class Player : MonoBehaviour
                 bullet.ignoreTag = tag;
                 bullet.audioClip = equippedGun.SoundEffect;
 
-                bulletFired = true;
-                StartCoroutine(ResetBulletFired());
+                if (!equippedGun.AutomaticFire)
+                {
+                    gunReady = false;
+                }
+
+                //StartCoroutine(ResetBulletFired());
                 ProcessDamage(costPerShot);
                 screenShaker.strength += equippedGun.ScreenShakeStrength;
                 screenShaker.duration += equippedGun.ScreenShakeDuration;
                 Debug.Log(currentAmmo);
             }
+        }
+        else if (Input.GetAxis("Fire1") == 0)
+        {
+            gunReady = true;
         }
     }
     private void ProcessBlocking()
@@ -170,10 +179,12 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(fireTimeout);
         Debug.Log("You can shoot again!!!!!");
-        bulletFired = false;
+        gunReady = true;
     }
     public void ProcessDamage(int damage)
     {
+        audioSource.pitch *= Random.Range(0.8f, 1.4f);
+        audioSource.Play();
         currentAmmo -= damage;
         if (currentAmmo <= 0)
         {
