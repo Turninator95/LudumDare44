@@ -14,10 +14,14 @@ public class Player : MonoBehaviour
     private bool bulletFired = false;
     [SerializeField]
     private float fireTimeout = 5f;
+    [SerializeField]
+    private float scopeDistance = 2;
 
     [SerializeField]
     private int initialAmmo = 20, maxAmmo = 100, costPerShot = 1;
     private int currentAmmo;
+
+
 
 
 
@@ -51,8 +55,8 @@ public class Player : MonoBehaviour
     {
         if (Input.GetAxis("HorizontalAim") != 0 || Input.GetAxis("VerticalAim") != 0)
         {
-            scope.transform.position = transform.position + 
-                new Vector3(Input.GetAxis("HorizontalAim"), 0, Input.GetAxis("VerticalAim"));
+            scope.transform.position = gun.transform.position + 
+                new Vector3(Input.GetAxis("HorizontalAim") * scopeDistance, 0, Input.GetAxis("VerticalAim")*scopeDistance);
             gun.transform.LookAt(scope.transform);
             //gun.transform.rotation = Quaternion.Euler(90, gun.transform.rotation.eulerAngles.y, gun.transform.rotation.eulerAngles.z);
 
@@ -68,7 +72,7 @@ public class Player : MonoBehaviour
         {
             if (currentAmmo - costPerShot > 0)
             {
-                Instantiate(bullet, transform.position, gun.transform.rotation);
+                Instantiate(bullet, gun.transform.position, gun.transform.rotation);
                 bulletFired = true;
                 StartCoroutine(ResetBulletFired());
                 currentAmmo -= costPerShot;
