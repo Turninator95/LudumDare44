@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
     public int currentAmmo;
     private bool timeoutActive = false;
     private AudioSource audioSource;
+    private GameManager gameManager;
 
     #region Properties
     public float MovementSpeed { get => movementSpeed; set => movementSpeed = value; }
@@ -34,6 +35,8 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
+        gameManager.EnemySpawned(this);
         audioSource = GetComponent<AudioSource>();
         gun.GetComponentInChildren<SpriteRenderer>().sprite = equippedGun.GunSprite;
         actionIndex = 0;
@@ -78,5 +81,10 @@ public class Enemy : MonoBehaviour
             Debug.Log("it ded");
         }
 
+    }
+
+    private void OnDestroy()
+    {
+        gameManager.EnemyDestroyed(this);
     }
 }
