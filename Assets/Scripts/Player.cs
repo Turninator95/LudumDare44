@@ -33,6 +33,10 @@ public class Player : MonoBehaviour
     void Start()
     {
         screenShaker = Camera.main.GetComponent<ScreenShaker>();
+        if (screenShaker == null)
+        {
+            screenShaker = Camera.main.gameObject.AddComponent<ScreenShaker>();
+        }
         currentAmmo = initialAmmo;
         rigidbody = gameObject.GetComponent<Rigidbody>();
         blockObject = GameObject.Find("BlockObj");
