@@ -82,10 +82,10 @@ MonoBehaviour:
   scope: {fileID: 0}
   equippedGun: {fileID: 11400000, guid: 8dac5c1181089384c8c4054a96b0b03e, type: 2}
   gun: {fileID: 6294959237159924769}
-  runningSpeed: 1
+  runningSpeed: 1.95
   fireTimeout: 0.1
   blockMaxTime: 0.5
-  scopeDistance: 2
+  scopeDistance: 0.8
   initialAmmo: 20
   maxAmmo: 100
   costPerShot: 1
