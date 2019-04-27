@@ -87,7 +87,7 @@ MonoBehaviour:
   blockMaxTime: 0.5
   scopeDistance: 0.8
   initialAmmo: 20
-  maxAmmo: 100
+  maxAmmo: 20
   costPerShot: 1
 --- !u!54 &6294959235819044448
 Rigidbody:
