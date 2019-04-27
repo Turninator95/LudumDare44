@@ -32,6 +32,7 @@ public class ShootAction : EnemyActions
                     Bullet bullet = Instantiate(enemy.EquippedGun.Projectile, enemy.Gun.transform.GetChild(1).transform.position, enemy.Gun.transform.rotation).GetComponent<Bullet>();
                     bullet.speed = enemy.EquippedGun.ProjectileSpeed;
                     bullet.ignoreTag = enemy.tag;
+                    bullet.damage = enemy.EquippedGun.ProjectileDamage;
                     enemy.CurrentAmmo -= enemy.EquippedGun.CostPerShot;
                     Debug.Log($"{enemy.name} has {enemy.CurrentAmmo} ammo left.");
                 }

@@ -7,26 +7,26 @@ public class Player : MonoBehaviour
     [Header("References"),SerializeField]
     private GameObject scope;
     [SerializeField]
-    private GameObject bullet, gun;
+    private Gun equippedGun;
+    [SerializeField]
+    private GameObject gun;
     [SerializeField, Range(1.0f, 20.0f)]
     [Header("Variables")]
     private float runningSpeed = 1;
     private bool bulletFired = false;
     [SerializeField]
-    private float fireTimeout = 5f, bulletSpeed = 5f;
+    private float fireTimeout = 5f;
     [SerializeField]
     private float blockMaxTime = 0.5f, scopeDistance = 2;
-
     private float blockTimePassed = 0;
 
     [SerializeField]
     private int initialAmmo = 20, maxAmmo = 100, costPerShot = 1;
     private int currentAmmo;
 
-
     private Rigidbody rigidbody;
     private GameObject blockObject;
-    ScreenShaker screenShaker;
+    private ScreenShaker screenShaker;
     private bool gamePadWasUsed = false;
 
 
@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
         {
             scope = GameObject.Find("Scope");
         }
-
+        gun.GetComponentInChildren<SpriteRenderer>().sprite = equippedGun.GunSprite;
     }
 
     // Update is called once per frame
@@ -64,22 +64,16 @@ public class Player : MonoBehaviour
 
     private void ProcessMovementInput()
     {
-        
-        rigidbody.velocity = 
-            new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"))
-             * runningSpeed;
-
+        rigidbody.velocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * runningSpeed;
     }
+
     private void ProcessAimingInput()
     {
-        
-
-
         if (Input.GetAxis("HorizontalAim") != 0 || Input.GetAxis("VerticalAim") != 0)
         {
             gamePadWasUsed = true;
             scope.transform.position = gun.transform.position + 
-                new Vector3(Input.GetAxis("HorizontalAim") * scopeDistance, 0, Input.GetAxis("VerticalAim")*scopeDistance);
+                new Vector3(Input.GetAxis("HorizontalAim") * scopeDistance, 0, Input.GetAxis("VerticalAim") * scopeDistance);
             gun.transform.LookAt(scope.transform);
             if(gun.transform.eulerAngles.y > 0 && gun.transform.eulerAngles.y < 180)
             {
@@ -90,7 +84,8 @@ public class Player : MonoBehaviour
                 gun.transform.localScale = new Vector3(1, 1, 1);
             }
 
-        }else if (!gamePadWasUsed)
+        }
+        else if (!gamePadWasUsed)
         {
             Vector3 mousePos = Vector3.zero;
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -99,7 +94,6 @@ public class Player : MonoBehaviour
             Vector3 tmpGunPos = gun.transform.position;
             tmpGunPos.Scale(new Vector3(1, 0, 1));
 
-            //mousePos = mousePos.normalized;
             if (Vector3.Distance(mousePos, tmpGunPos) > scopeDistance)
             {
                 scope.transform.position = gun.transform.position;
@@ -107,11 +101,11 @@ public class Player : MonoBehaviour
                 scope.transform.position += scope.transform.forward * scopeDistance;
                 scope.transform.eulerAngles = Vector3.zero;
 
-            }else
+            }
+            else
             {
                 scope.transform.position = mousePos;
             }
-            Debug.Log(mousePos);
             
             gun.transform.LookAt(scope.transform);
             if (gun.transform.eulerAngles.y > 0 && gun.transform.eulerAngles.y < 180)
@@ -134,7 +128,10 @@ public class Player : MonoBehaviour
         {
             if (currentAmmo - costPerShot > 0)
             {
-                Instantiate(bullet, gun.transform.GetChild(1).transform.position, gun.transform.rotation).GetComponent<Bullet>().speed = bulletSpeed;
+                Bullet bullet = Instantiate(equippedGun.Projectile, gun.transform.GetChild(1).transform.position, gun.transform.rotation).GetComponent<Bullet>();
+                bullet.damage = equippedGun.ProjectileDamage;
+                bullet.speed = equippedGun.ProjectileSpeed;
+                bullet.ignoreTag = tag;
 
                 bulletFired = true;
                 StartCoroutine(ResetBulletFired());
@@ -181,7 +178,5 @@ public class Player : MonoBehaviour
         {
             Debug.Log("We ded");
         }
-
     }
-
 }
