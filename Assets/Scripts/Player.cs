@@ -101,7 +101,7 @@ public class Player : MonoBehaviour
 
                 bulletFired = true;
                 StartCoroutine(ResetBulletFired());
-                currentAmmo -= costPerShot;
+                ProcessDamage(costPerShot);
                 screenShaker.strength += 0.1f;
                 screenShaker.duration += 0.05f;
                 Debug.Log(currentAmmo);
@@ -136,5 +136,14 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(fireTimeout);
         Debug.Log("You can shoot again!!!!!");
         bulletFired = false;
+    }
+    public void ProcessDamage(int damage)
+    {
+        currentAmmo -= damage;
+        if (currentAmmo <= 0)
+        {
+            Debug.Log("We ded");
+        }
+
     }
 }
