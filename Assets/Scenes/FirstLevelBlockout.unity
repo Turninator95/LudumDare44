@@ -609,6 +609,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlockObj
       objectReference: {fileID: 0}
+    - target: {fileID: 8315814819049009439, guid: 9b2794bef24294046bf9d2f1111d9626,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bullet
+      objectReference: {fileID: 0}
     - target: {fileID: 8315814819049009435, guid: 9b2794bef24294046bf9d2f1111d9626,
         type: 3}
       propertyPath: m_LocalPosition.x
