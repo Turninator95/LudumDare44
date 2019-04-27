@@ -58,6 +58,14 @@ public class Player : MonoBehaviour
             scope.transform.position = gun.transform.position + 
                 new Vector3(Input.GetAxis("HorizontalAim") * scopeDistance, 0, Input.GetAxis("VerticalAim")*scopeDistance);
             gun.transform.LookAt(scope.transform);
+            if(gun.transform.eulerAngles.y > 0 && gun.transform.eulerAngles.y < 180)
+            {
+                gun.transform.localScale = new Vector3(-1, 1, 1);
+            }
+            else
+            {
+                gun.transform.localScale = new Vector3(1, 1, 1);
+            }
             //gun.transform.rotation = Quaternion.Euler(90, gun.transform.rotation.eulerAngles.y, gun.transform.rotation.eulerAngles.z);
 
         }
