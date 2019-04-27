@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     private Rigidbody rigidbody;
     private GameObject blockObject;
     ScreenShaker screenShaker;
+    private bool gamePadWasUsed = false;
 
 
     // Start is called before the first frame update
@@ -71,8 +72,12 @@ public class Player : MonoBehaviour
     }
     private void ProcessAimingInput()
     {
+        
+
+
         if (Input.GetAxis("HorizontalAim") != 0 || Input.GetAxis("VerticalAim") != 0)
         {
+            gamePadWasUsed = true;
             scope.transform.position = gun.transform.position + 
                 new Vector3(Input.GetAxis("HorizontalAim") * scopeDistance, 0, Input.GetAxis("VerticalAim")*scopeDistance);
             gun.transform.LookAt(scope.transform);
@@ -85,6 +90,38 @@ public class Player : MonoBehaviour
                 gun.transform.localScale = new Vector3(1, 1, 1);
             }
 
+        }else if (!gamePadWasUsed)
+        {
+            Vector3 mousePos = Vector3.zero;
+            mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            mousePos.y = gun.transform.position.y;
+            Vector3 tmpGunPos = gun.transform.position;
+            tmpGunPos.Scale(new Vector3(1, 0, 1));
+
+            //mousePos = mousePos.normalized;
+            if (Vector3.Distance(mousePos, tmpGunPos) > scopeDistance)
+            {
+                scope.transform.position = gun.transform.position;
+                scope.transform.LookAt(mousePos);
+                scope.transform.position += scope.transform.forward * scopeDistance;
+                scope.transform.eulerAngles = Vector3.zero;
+
+            }else
+            {
+                scope.transform.position = mousePos;
+            }
+            Debug.Log(mousePos);
+            
+            gun.transform.LookAt(scope.transform);
+            if (gun.transform.eulerAngles.y > 0 && gun.transform.eulerAngles.y < 180)
+            {
+                gun.transform.localScale = new Vector3(-1, 1, 1);
+            }
+            else
+            {
+                gun.transform.localScale = new Vector3(1, 1, 1);
+            }
         }
         else if (Input.GetAxis("HorizontalAim") == 0 && Input.GetAxis("VerticalAim") == 0)
         {
