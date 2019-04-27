@@ -96,12 +96,22 @@ public class Player : MonoBehaviour
             gun.transform.LookAt(scope.transform);
             if (gun.transform.eulerAngles.y > 0 && gun.transform.eulerAngles.y < 180)
             {
-                gun.transform.localScale = new Vector3(-1, 1, 1);
+                transform.localScale = new Vector3(-1, 1, 1);
             }
             else
             {
-                gun.transform.localScale = new Vector3(1, 1, 1);
+                transform.localScale = new Vector3(1, 1, 1);
             }
+
+            if (scope.transform.position.x > transform.position.x)
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+            else
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            gun.transform.LookAt(scope.transform);
 
         }
         else if (!gamePadWasUsed)
@@ -125,21 +135,23 @@ public class Player : MonoBehaviour
             {
                 scope.transform.position = mousePos;
             }
+
+            if (scope.transform.position.x > transform.position.x)
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+            else
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            gun.transform.LookAt(scope.transform);
         }
         else if (Input.GetAxis("HorizontalAim") == 0 && Input.GetAxis("VerticalAim") == 0)
         {
             scope.transform.position = transform.position;
         }
-        gun.transform.LookAt(scope.transform);
+        
 
-        if (scope.transform.position.x > transform.position.x)
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
-        else
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-        }
 
         
     }
