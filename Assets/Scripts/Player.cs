@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     private float runningSpeed = 1;
     private bool bulletFired = false;
     [SerializeField]
-    private float fireTimeout = 5f;
+    private float fireTimeout = 5f, bulletSpeed = 5f;
     [SerializeField]
     private float scopeDistance = 2;
 
@@ -72,7 +72,8 @@ public class Player : MonoBehaviour
         {
             if (currentAmmo - costPerShot > 0)
             {
-                Instantiate(bullet, gun.transform.position, gun.transform.rotation);
+                Instantiate(bullet, gun.transform.position, gun.transform.rotation).GetComponent<Bullet>().speed = bulletSpeed;
+
                 bulletFired = true;
                 StartCoroutine(ResetBulletFired());
                 currentAmmo -= costPerShot;
