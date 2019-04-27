@@ -6,7 +6,7 @@ using UnityEngine;
 public class Gun : ScriptableObject
 {
     [SerializeField]
-    private int costPerShot = 1, projectileSpeed = 1, projectileDamage = 1;
+    private int costPerShot = 1, shotsPerSecond = 1, projectileSpeed = 1, projectileDamage = 1;
     [SerializeField]
     private GameObject projectile;
     [SerializeField]
@@ -27,5 +27,6 @@ public class Gun : ScriptableObject
     public float ScreenShakeDuration { get => screenShakeDuration; set => screenShakeDuration = value; }
     public AudioClip SoundEffect { get => soundEffect; set => soundEffect = value; }
     public bool AutomaticFire { get => automaticFire; set => automaticFire = value; }
+    public int ShotsPerSecond { get => shotsPerSecond; set => shotsPerSecond = value; }
     #endregion
 }
