@@ -35,7 +35,7 @@ public class ShootAction : EnemyActions
                     bullet.damage = enemy.EquippedGun.ProjectileDamage;
                     //bullet.audioSource.clip = enemy.EquippedGun.SoundEffect;
                     bullet.audioClip = enemy.EquippedGun.SoundEffect;
-                    enemy.CurrentAmmo -= enemy.EquippedGun.CostPerShot;
+                    enemy.ProcessDamage(enemy.EquippedGun.CostPerShot);
                     Debug.Log($"{enemy.name} has {enemy.CurrentAmmo} ammo left.");
                 }
 
