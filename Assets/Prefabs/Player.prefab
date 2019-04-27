@@ -83,6 +83,7 @@ MonoBehaviour:
   runningSpeed: 1
   fireTimeout: 0.1
   bulletSpeed: 5
+  blockMaxTime: 0.5
   scopeDistance: 2
   initialAmmo: 20
   maxAmmo: 100
@@ -263,7 +264,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 94ce16bd3cbd93348ae481248b56a806, type: 3}
+  m_Sprite: {fileID: -2123396224655285690, guid: 45d43ae577863f2428908c4312eff263,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -15,7 +15,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float fireTimeout = 5f, bulletSpeed = 5f;
     [SerializeField]
-    private float scopeDistance = 2;
+    private float blockMaxTime = 0.5f, scopeDistance = 2;
+
+    private float blockTimePassed = 0;
 
     [SerializeField]
     private int initialAmmo = 20, maxAmmo = 100, costPerShot = 1;
@@ -23,6 +25,7 @@ public class Player : MonoBehaviour
 
 
     private Rigidbody rigidbody;
+    private GameObject blockObject; 
 
 
     // Start is called before the first frame update
@@ -30,6 +33,12 @@ public class Player : MonoBehaviour
     {
         currentAmmo = initialAmmo;
         rigidbody = gameObject.GetComponent<Rigidbody>();
+        blockObject = GameObject.Find("BlockObj");
+        if (scope == null)
+        {
+            scope = GameObject.Find("Scope");
+        }
+
     }
 
     // Update is called once per frame
@@ -38,6 +47,7 @@ public class Player : MonoBehaviour
         ProcessMovementInput();
         ProcessAimingInput();
         ProcessShooting();
+        ProcessBlocking();
 
         if (currentAmmo <= 0)
         {
@@ -90,6 +100,28 @@ public class Player : MonoBehaviour
                 Debug.Log(currentAmmo);
             }
         }
+    }
+    private void ProcessBlocking()
+    {
+        bool setActive = false;
+        if (Input.GetAxis("Fire2") > 0)
+        {
+            if(blockTimePassed < blockMaxTime)
+            {
+                blockTimePassed += Time.deltaTime;
+                setActive = true;
+                blockObject.transform.position = scope.transform.position;
+                blockObject.transform.rotation = gun.transform.rotation;
+            }
+        }
+        else
+        {
+            
+            blockTimePassed -= Time.deltaTime;
+            blockTimePassed = Mathf.Clamp(blockTimePassed, 0, blockMaxTime);
+        }
+        blockObject.SetActive(setActive);
+
     }
 
     private IEnumerator ResetBulletFired()
