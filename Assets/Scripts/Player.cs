@@ -138,9 +138,11 @@ public class Player : MonoBehaviour
                 if (!equippedGun.AutomaticFire)
                 {
                     gunReady = false;
+                    fireTimeout = (float)1 / equippedGun.ShotsPerSecond; 
+                    StartCoroutine(ResetBulletFired());
                 }
 
-                //StartCoroutine(ResetBulletFired());
+                
                 ProcessDamage(costPerShot);
                 screenShaker.strength += equippedGun.ScreenShakeStrength;
                 screenShaker.duration += equippedGun.ScreenShakeDuration;
