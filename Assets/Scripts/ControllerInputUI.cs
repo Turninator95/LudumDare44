@@ -8,6 +8,8 @@ using TMPro;
 
 public class ControllerInputUI : MonoBehaviour
 {
+    [SerializeField]
+    private bool horizontalButtons = false;
     private List<Button> buttons;
     private int currentIndex;
     private bool selectActive = false, buttonClicked = false;
@@ -18,7 +20,15 @@ public class ControllerInputUI : MonoBehaviour
         buttons.AddRange(FindObjectsOfType<Button>());
         if (buttons.Count > 0)
         {
-            buttons = buttons.OrderByDescending(x => x.transform.localPosition.y).ToList();
+            if (horizontalButtons)
+            {
+                buttons = buttons.OrderByDescending(x => x.transform.localPosition.x).ToList();
+            }
+            else
+            {
+                buttons = buttons.OrderByDescending(x => x.transform.localPosition.y).ToList();
+            }
+            
             currentIndex = 0;
             SelectOption();
         }
