@@ -32,6 +32,9 @@ public class Player : MonoBehaviour
     private HealthBar healthBar;
     private GameManager gameManager;
 
+    public int MaxAmmo { get => maxAmmo; set => maxAmmo = value; }
+    public int CurrentAmmo { get => currentAmmo; set => currentAmmo = value; }
+
 
     // Start is called before the first frame update
     void Start()

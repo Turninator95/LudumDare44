@@ -29,6 +29,13 @@ public class Enemy : MonoBehaviour
     public bool takeDamageWhenFiring = true;
 
     GameObject player;
+    [SerializeField]
+    int additionalScoreMin = 2;
+    [SerializeField]
+    float duration = 5;
+    [SerializeField]
+    GameObject pickUpObj;
+
 
     #region Properties
     public float MovementSpeed { get => movementSpeed; set => movementSpeed = value; }
@@ -99,6 +106,7 @@ public class Enemy : MonoBehaviour
         {
             gameManager.EnemyDestroyed(this);
             Debug.Log("it ded");
+            SpawnPickups();
             Destroy(gameObject);
         }
     }
@@ -109,5 +117,21 @@ public class Enemy : MonoBehaviour
         {
             (actions[actionIndex] as MoveAction).ChangeMovementDirection(this);
         }
+    }
+    private void SpawnPickups ()
+    {
+        if(pickUpObj != null)
+        {
+            MoneyPickup tmpMoneyPickup = GameObject.Instantiate(pickUpObj).GetComponent<MoneyPickup>();
+            tmpMoneyPickup.transform.position = transform.position;
+            tmpMoneyPickup.lifetime = duration;
+            Player tmpPlayer = player.GetComponent<Player>();
+            int tmpMax = tmpPlayer.MaxAmmo - tmpPlayer.CurrentAmmo;
+            tmpMax = Mathf.Clamp(tmpMax, additionalScoreMin +1,  tmpPlayer.MaxAmmo);
+            tmpMoneyPickup.bonusLifes = Mathf.FloorToInt(Random.Range(additionalScoreMin, tmpMax));
+
+        }
+
+
     }
 }
