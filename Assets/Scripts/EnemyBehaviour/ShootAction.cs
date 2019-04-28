@@ -27,7 +27,7 @@ public class ShootAction : EnemyActions
 
                 enemy.Gun.transform.LookAt(player.transform);
 
-                if (enemy.CurrentAmmo - enemy.EquippedGun.CostPerShot > 0)
+                if (enemy.CurrentAmmo - enemy.EquippedGun.CostPerShot > 0 || !enemy.takeDamageWhenFiring)
                 {
                     Bullet bullet = Instantiate(enemy.EquippedGun.Projectile, enemy.Gun.transform.GetChild(1).transform.position, enemy.Gun.transform.rotation).GetComponent<Bullet>();
                     bullet.speed = enemy.EquippedGun.ProjectileSpeed;

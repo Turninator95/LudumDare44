@@ -14134,6 +14134,11 @@ PrefabInstance:
       propertyPath: maxAmmo
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6294959235819044462, guid: 3fb9bb670a9d1104c98769ac8cca75f8,
+        type: 3}
+      propertyPath: runningSpeed
+      value: 3.78
+      objectReference: {fileID: 0}
     - target: {fileID: 6294959235819044463, guid: 3fb9bb670a9d1104c98769ac8cca75f8,
         type: 3}
       propertyPath: m_Size.z
