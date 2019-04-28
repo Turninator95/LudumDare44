@@ -40,6 +40,9 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     GameObject pickUpObj;
 
+    [SerializeField]
+    private GameObject hit, death;
+
 
     #region Properties
     public float MovementSpeed { get => movementSpeed; set => movementSpeed = value; }
@@ -127,7 +130,14 @@ public class Enemy : MonoBehaviour
             gameManager.EnemyDestroyed(this);
             Debug.Log("it ded");
             SpawnPickups();
+            GameObject tmpgObj = GameObject.Instantiate(death);
+            tmpgObj.transform.position = transform.position;
             Destroy(gameObject);
+        }
+        else
+        {
+            GameObject tmpgObj = GameObject.Instantiate(hit);
+            tmpgObj.transform.position = transform.position;
         }
     }
 
