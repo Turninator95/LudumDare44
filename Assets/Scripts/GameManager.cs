@@ -5,19 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    List<Enemy> enemies = new List<Enemy>();
-    
+    private List<Enemy> enemies = new List<Enemy>();
 
     void Start()
     {
-        
-
     }
-
     
     void Update()
     {
-        
     }
 
     public void EnemySpawned(Enemy enemy)
@@ -38,7 +33,7 @@ public class GameManager : MonoBehaviour
 
         if (enemies.Count == 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1, LoadSceneMode.Single);
         }
 
         Debug.Log($"A new enemy has been destroyed. New count: {enemies.Count}");
@@ -46,8 +41,6 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex - 1, LoadSceneMode.Single);
     }
-
-    
 }

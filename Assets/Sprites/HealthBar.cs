@@ -22,7 +22,5 @@ public class HealthBar : MonoBehaviour
     {
         healthBar.fillAmount = health / maxHealth;
         healthBar2.fillAmount = (health - shotDamage) / maxHealth;
-
-
     }
 }

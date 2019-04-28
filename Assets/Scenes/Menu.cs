@@ -8,8 +8,7 @@ public class Menu : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
     }
 
     public void QuitGame()
@@ -17,5 +16,4 @@ public class Menu : MonoBehaviour
         Debug.Log("QUIT!");
         Application.Quit();
     }
-
 }

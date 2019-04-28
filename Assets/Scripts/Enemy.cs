@@ -37,10 +37,15 @@ public class Enemy : MonoBehaviour
     public GameObject Gun { get => gun; set => gun = value; }
     #endregion
 
-    private void Start()
+
+    private void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
         gameManager.EnemySpawned(this);
+    }
+
+    private void Start()
+    {
         audioSource = GetComponent<AudioSource>();
         gun.GetComponentInChildren<SpriteRenderer>().sprite = equippedGun.GunSprite;
         actionIndex = 0;
@@ -96,7 +101,14 @@ public class Enemy : MonoBehaviour
             Debug.Log("it ded");
             Destroy(gameObject);
         }
+    }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (actions[actionIndex].GetType() == typeof(MoveAction) && collision.collider.tag != "Bullet")
+        {
+            (actions[actionIndex] as MoveAction).ChangeMovementDirection(this);
+        }
     }
 
     private void OnDestroy()
