@@ -54,7 +54,7 @@ public class Bullet : MonoBehaviour
                 return;
             }
 
-            else if (other.tag == "Block")
+            else if (other.tag == "Block" && ignoreTag != "Player")
             {
                 GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().ProcessDamage(-damage);
                 Destroy(gameObject);
