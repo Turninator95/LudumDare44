@@ -80,12 +80,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scope: {fileID: 0}
-  equippedGun: {fileID: 11400000, guid: dc28075ec2844b84ab6d0fa05050748e, type: 2}
+  equippedGun: {fileID: 11400000, guid: 8dac5c1181089384c8c4054a96b0b03e, type: 2}
   gun: {fileID: 6294959237159924769}
-  runningSpeed: 5.15
+  runningSpeed: 3.71
   fireTimeout: 0.1
   blockMaxTime: 0.5
-  scopeDistance: 0.8
+  scopeDistance: 1.6
   initialAmmo: 3
   maxAmmo: 3
 --- !u!54 &6294959235819044448
@@ -565,6 +565,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8120208178362799804, guid: 4daba5a68e95f9d49aee781041c154df,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4daba5a68e95f9d49aee781041c154df, type: 3}
