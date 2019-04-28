@@ -12666,12 +12666,12 @@ PrefabInstance:
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
       propertyPath: initialAmmo
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
       propertyPath: maxAmmo
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
@@ -12682,7 +12682,7 @@ PrefabInstance:
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
       propertyPath: currentAmmo
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
@@ -12693,8 +12693,7 @@ PrefabInstance:
         type: 3}
       propertyPath: pickUpObj
       value: 
-      objectReference: {fileID: 6112307639627305387, guid: 4955d72590f76e94eaf246f5f4871505,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
       propertyPath: actionTimeout
@@ -12777,12 +12776,12 @@ PrefabInstance:
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
       propertyPath: initialAmmo
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
       propertyPath: maxAmmo
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
@@ -12793,7 +12792,7 @@ PrefabInstance:
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
       propertyPath: currentAmmo
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
@@ -12804,8 +12803,7 @@ PrefabInstance:
         type: 3}
       propertyPath: pickUpObj
       value: 
-      objectReference: {fileID: 6112307639627305387, guid: 4955d72590f76e94eaf246f5f4871505,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
       propertyPath: actionTimeout
@@ -13619,12 +13617,12 @@ PrefabInstance:
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
       propertyPath: initialAmmo
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
       propertyPath: maxAmmo
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
@@ -13635,7 +13633,7 @@ PrefabInstance:
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
       propertyPath: currentAmmo
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
@@ -13646,8 +13644,7 @@ PrefabInstance:
         type: 3}
       propertyPath: pickUpObj
       value: 
-      objectReference: {fileID: 6112307639627305387, guid: 4955d72590f76e94eaf246f5f4871505,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
       propertyPath: actionTimeout
@@ -13907,7 +13904,7 @@ PrefabInstance:
     - target: {fileID: 5866905189490557123, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2
+      value: -3.78
       objectReference: {fileID: 0}
     - target: {fileID: 5866905189490557123, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
@@ -13917,7 +13914,7 @@ PrefabInstance:
     - target: {fileID: 5866905189490557123, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2
+      value: 3.63
       objectReference: {fileID: 0}
     - target: {fileID: 5866905189490557123, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
@@ -13958,48 +13955,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
-        type: 3}
-      propertyPath: actions.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
-        type: 3}
-      propertyPath: initialAmmo
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
-        type: 3}
-      propertyPath: maxAmmo
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
-        type: 3}
-      propertyPath: actions.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: 792d67b1837d7be43a0762c184f8a6e9,
-        type: 2}
-    - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
-        type: 3}
-      propertyPath: currentAmmo
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
-        type: 3}
-      propertyPath: takeDamageWhenFiring
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
-        type: 3}
-      propertyPath: pickUpObj
-      value: 
-      objectReference: {fileID: 6112307639627305387, guid: 4955d72590f76e94eaf246f5f4871505,
-        type: 3}
-    - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
-        type: 3}
-      propertyPath: actionTimeout
-      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05d33648c23797d4383dc9b1a05302de, type: 3}
@@ -14087,7 +14042,7 @@ PrefabInstance:
     - target: {fileID: 6294959235819044461, guid: 3fb9bb670a9d1104c98769ac8cca75f8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.16
+      value: 1.56
       objectReference: {fileID: 0}
     - target: {fileID: 6294959235819044461, guid: 3fb9bb670a9d1104c98769ac8cca75f8,
         type: 3}
@@ -14097,7 +14052,7 @@ PrefabInstance:
     - target: {fileID: 6294959235819044461, guid: 3fb9bb670a9d1104c98769ac8cca75f8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.53
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6294959235819044461, guid: 3fb9bb670a9d1104c98769ac8cca75f8,
         type: 3}
@@ -14144,36 +14099,6 @@ PrefabInstance:
       propertyPath: scope
       value: 
       objectReference: {fileID: 812576148}
-    - target: {fileID: 6294959235819044462, guid: 3fb9bb670a9d1104c98769ac8cca75f8,
-        type: 3}
-      propertyPath: initialAmmo
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6294959235819044462, guid: 3fb9bb670a9d1104c98769ac8cca75f8,
-        type: 3}
-      propertyPath: maxAmmo
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6294959235819044462, guid: 3fb9bb670a9d1104c98769ac8cca75f8,
-        type: 3}
-      propertyPath: runningSpeed
-      value: 3.78
-      objectReference: {fileID: 0}
-    - target: {fileID: 6294959235819044463, guid: 3fb9bb670a9d1104c98769ac8cca75f8,
-        type: 3}
-      propertyPath: m_Size.z
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6294959235819044463, guid: 3fb9bb670a9d1104c98769ac8cca75f8,
-        type: 3}
-      propertyPath: m_Center.z
-      value: -0.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 6294959235819044463, guid: 3fb9bb670a9d1104c98769ac8cca75f8,
-        type: 3}
-      propertyPath: m_Center.x
-      value: 0.05
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fb9bb670a9d1104c98769ac8cca75f8, type: 3}
 --- !u!1001 &8315814819092126837

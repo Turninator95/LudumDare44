@@ -14,9 +14,12 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-        audioSource.pitch *= Random.Range(1.0f, 1.5f); 
-        audioSource.PlayOneShot(audioClip);
+        if (audioClip != null)
+        {
+            audioSource = GetComponent<AudioSource>();
+            audioSource.pitch *= Random.Range(1.0f, 1.5f);
+            audioSource.PlayOneShot(audioClip);
+        }
     }
 
     // Update is called once per frame

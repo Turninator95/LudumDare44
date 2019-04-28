@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: TrustFundBaby
   m_EditorClassIdentifier: 
   difficultyLevel: 0
-  playerInitialAmmo: 20
-  playerMaxAmmo: 20
+  playerInitialAmmo: 6
+  playerMaxAmmo: 6
