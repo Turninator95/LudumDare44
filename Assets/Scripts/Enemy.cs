@@ -11,12 +11,14 @@ public class Enemy : MonoBehaviour
     [Header("Actions")]
     [SerializeField]
     private List<EnemyActions> actions = new List<EnemyActions>();
+    [SerializeField]
+    private List<EnemyActions> rageActions = new List<EnemyActions>();
     private int actionIndex;
     [SerializeField]
-    private float actionTimeout = 2f;
+    private float actionTimeout = 2f, rageActionTimeout = 0.1f;
     [Header("Movement")]
     [SerializeField]
-    private float movementSpeed = 1f;
+    private float movementSpeed = 1f, rageMovementSpeed = 3f;
     [SerializeField, Header("Ammo")]
     private int initialAmmo = 20;
     [SerializeField]
@@ -134,7 +136,8 @@ public class Enemy : MonoBehaviour
     }
     public void Enrage()
     {
-        actionTimeout = 0.1f;
-        movementSpeed *= 2;
+        actions = rageActions;
+        actionTimeout = rageActionTimeout;
+        movementSpeed = rageMovementSpeed;
     }
 }
