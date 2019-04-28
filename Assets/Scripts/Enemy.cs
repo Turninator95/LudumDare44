@@ -53,6 +53,22 @@ public class Enemy : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
         gameManager.EnemySpawned(this);
+
+        List<EnemyActions> instancedActions = new List<EnemyActions>();
+
+        foreach (EnemyActions item in actions)
+        {
+            instancedActions.Add(Instantiate(item));
+        }
+
+        actions = instancedActions;
+
+        instancedActions.Clear();
+        foreach (EnemyActions item in rageActions)
+        {
+            instancedActions.Add(Instantiate(item));
+        }
+        rageActions = instancedActions;
     }
 
     private void Start()

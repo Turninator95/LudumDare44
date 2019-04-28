@@ -11,6 +11,7 @@ public class MoveAction : EnemyActions
     private Vector3 startPosition;
     private bool startPositionSet = false;
     private Rigidbody rigidbody;
+
     public override void Execute(Enemy enemy)
     {
         rigidbody = enemy.gameObject.GetComponent<Rigidbody>();
