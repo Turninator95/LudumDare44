@@ -25,6 +25,8 @@ public class Enemy : MonoBehaviour
     private bool timeoutActive = false;
     private AudioSource audioSource;
     private GameManager gameManager;
+    [SerializeField]
+    public bool takeDamageWhenFiring = true;
 
     GameObject player;
 
