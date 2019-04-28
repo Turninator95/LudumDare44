@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System.Linq;
 
 public class ControllerInputUI : MonoBehaviour
 {
     private List<Button> buttons;
     private int currentIndex;
-    private bool selectActive, buttonClicked;
+    private bool selectActive = false, buttonClicked = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,7 @@ public class ControllerInputUI : MonoBehaviour
         buttons.AddRange(FindObjectsOfType<Button>());
         if (buttons.Count > 0)
         {
+            buttons = buttons.OrderByDescending(x => x.transform.localPosition.y).ToList();
             currentIndex = 0;
             SelectOption();
         }
@@ -62,6 +64,7 @@ public class ControllerInputUI : MonoBehaviour
             buttons.AddRange(FindObjectsOfType<Button>());
             if (buttons.Count > 0)
             {
+                buttons = buttons.OrderByDescending(x => x.transform.localPosition.y).ToList();
                 if (currentIndex > buttons.Count - 1)
                 {
                     currentIndex = 0;
