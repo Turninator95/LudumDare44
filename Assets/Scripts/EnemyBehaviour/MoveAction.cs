@@ -30,7 +30,7 @@ public class MoveAction : EnemyActions
             RaycastHit raycastHit;
             if (Physics.Raycast(enemy.transform.position, movementDirection, out raycastHit, 1f))
             {
-                if (raycastHit.collider.tag != "Player" && raycastHit.collider.tag != "Enemy")
+                if (raycastHit.collider.tag != "Player" && raycastHit.collider.tag != "Enemy" && raycastHit.collider.tag != "Bullet")
                 {
                     ChangeMovementDirection(enemy);
                 }
