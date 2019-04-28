@@ -8,10 +8,11 @@ using TMPro;
 public class UpgradeScreen : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
     public GameObject explanationUpgrade;
+    private HealthBar healthBar;
 
     public void Start()
     {
-        
+        healthBar = FindObjectOfType<HealthBar>();
     }
 
     public void OnSelect(BaseEventData eventData)
