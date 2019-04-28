@@ -131,7 +131,10 @@ public class Enemy : MonoBehaviour
             tmpMoneyPickup.bonusLifes = Mathf.FloorToInt(Random.Range(additionalScoreMin, tmpMax));
 
         }
-
-
+    }
+    public void Enrage()
+    {
+        actionTimeout = 0.1f;
+        movementSpeed *= 2;
     }
 }

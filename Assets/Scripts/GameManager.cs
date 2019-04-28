@@ -27,14 +27,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-    //void Start()
-    //{
-    //}
-
-    //void Update()
-    //{
-    //}
-
     public void EnemySpawned(Enemy enemy)
     {
         if (!enemies.Contains(enemy))
@@ -54,6 +46,10 @@ public class GameManager : MonoBehaviour
         if (enemies.Count == 0)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1, LoadSceneMode.Single);
+        }
+        else if (enemies.Count == 1)
+        {
+            enemies[0].Enrage();
         }
 
         Debug.Log($"A new enemy has been destroyed. New count: {enemies.Count}");
