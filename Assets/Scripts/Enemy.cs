@@ -97,7 +97,7 @@ public class Enemy : MonoBehaviour
         currentAmmo -= damage;
         if (currentAmmo <= 0)
         {
-            
+            gameManager.EnemyDestroyed(this);
             Debug.Log("it ded");
             Destroy(gameObject);
         }
@@ -109,10 +109,5 @@ public class Enemy : MonoBehaviour
         {
             (actions[actionIndex] as MoveAction).ChangeMovementDirection(this);
         }
-    }
-
-    private void OnDestroy()
-    {
-        gameManager.EnemyDestroyed(this);
     }
 }

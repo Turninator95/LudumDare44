@@ -52,6 +52,7 @@ public class Player : MonoBehaviour
 
         if (currentAmmo <= 0)
         {
+            gameManager.GameOver();
             Destroy(gameObject);
             Debug.Log("YOU DED SON");
         }
@@ -208,7 +209,6 @@ public class Player : MonoBehaviour
             blockTimePassed = Mathf.Clamp(blockTimePassed, 0, blockMaxTime);
         }
         blockObject.SetActive(setActive);
-
     }
 
     private IEnumerator ResetBulletFired()
@@ -228,11 +228,7 @@ public class Player : MonoBehaviour
         if (currentAmmo <= 0)
         {
             Debug.Log("We ded");
+            gameManager.GameOver();
         }
-    }
-
-    private void OnDestroy()
-    {
-        gameManager.GameOver();
     }
 }

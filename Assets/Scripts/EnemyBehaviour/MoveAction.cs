@@ -22,21 +22,23 @@ public class MoveAction : EnemyActions
         if (startPositionSet == false)
         {
             startPosition = rigidbody.position;
-            movementDirection = Quaternion.Euler(0, Random.Range(-180, 181), 0) * enemy.transform.forward;
+            ChangeMovementDirection(enemy);
+            //movementDirection = Quaternion.Euler(0, Random.Range(-180, 181), 0) * enemy.transform.forward;
             startPositionSet = true;
         }
         if (Vector3.Distance(startPosition, enemy.transform.position) < moveDistance)
         {
-            Debug.DrawRay(enemy.transform.position, movementDirection);
+            //Debug.DrawRay(enemy.transform.position, movementDirection);
+            //RaycastHit raycastHit;
+            //if (Physics.Raycast(enemy.transform.position, movementDirection, out raycastHit, 1f))
+            //{
+            //    if (raycastHit.collider.tag != "Player" && raycastHit.collider.tag != "Enemy")
+            //    {
+            //        ChangeMovementDirection(enemy);
+            //        //movementDirection = Quaternion.Euler(0, Random.Range(-180, 181), 0) * enemy.transform.forward;
+            //    }
+            //}
             rigidbody.velocity = movementDirection * enemy.MovementSpeed;
-            RaycastHit raycastHit;
-            if (Physics.Raycast(enemy.transform.position, movementDirection, out raycastHit, 1f))
-            {
-                if (raycastHit.collider.tag != "Player" && raycastHit.collider.tag != "Enemy")
-                {
-                    movementDirection = Quaternion.Euler(0, Random.Range(-180, 181), 0) * enemy.transform.forward;
-                }
-            }
         }
         else
         {
@@ -44,5 +46,10 @@ public class MoveAction : EnemyActions
             startPositionSet = false;
             enemy.ActionCompleted();
         }
+    }
+
+    public void ChangeMovementDirection(Enemy enemy)
+    {
+        movementDirection = Quaternion.Euler(0, Random.Range(-180, 181), 0) * enemy.transform.forward;
     }
 }
