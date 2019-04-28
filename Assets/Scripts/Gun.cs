@@ -8,6 +8,8 @@ public class Gun : ScriptableObject
     [SerializeField]
     private int costPerShot = 1, shotsPerSecond = 1, projectileSpeed = 1, projectileDamage = 1;
     [SerializeField]
+    private float randomizedAngle = 5f;
+    [SerializeField]
     private GameObject projectile;
     [SerializeField]
     private Sprite gunSprite;
@@ -17,6 +19,8 @@ public class Gun : ScriptableObject
     private AudioClip soundEffect;
     [SerializeField]
     private bool automaticFire = false;
+    [SerializeField]
+    private float[] shotsAndDirections = new float[] { };
     #region Properties
     public int CostPerShot { get => costPerShot; set => costPerShot = value; }
     public GameObject Projectile { get => projectile; set => projectile = value; }
@@ -28,5 +32,7 @@ public class Gun : ScriptableObject
     public AudioClip SoundEffect { get => soundEffect; set => soundEffect = value; }
     public bool AutomaticFire { get => automaticFire; set => automaticFire = value; }
     public int ShotsPerSecond { get => shotsPerSecond; set => shotsPerSecond = value; }
+    public float[] ShotsAndDirections { get => shotsAndDirections; set => shotsAndDirections = value; }
+    public float RandomizedAngle { get => randomizedAngle; set => randomizedAngle = value; }
     #endregion
 }

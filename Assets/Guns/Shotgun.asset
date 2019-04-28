@@ -10,19 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26ef4329ee6c0474681f6c3060648bc6, type: 3}
-  m_Name: Revolver
+  m_Name: Shotgun
   m_EditorClassIdentifier: 
-  costPerShot: 1
+  costPerShot: 2
   shotsPerSecond: 1
   projectileSpeed: 9
   projectileDamage: 1
-  randomizedAngle: 2.5
+  randomizedAngle: 5
   projectile: {fileID: 1094163864691010628, guid: 1c667ab30ff045348a6389c78ccf09de,
     type: 3}
   gunSprite: {fileID: 21300000, guid: 0909d6e292f5bd043a2a474a91a7ee1c, type: 3}
-  screenShakeStrength: 0.3
+  screenShakeStrength: 0.8
   screenShakeDuration: 0.1
   soundEffect: {fileID: 8300000, guid: fb9ece8962fb0e145bfd57caf945a3cf, type: 3}
   automaticFire: 0
   shotsAndDirections:
+  - -15
   - 0
+  - 15

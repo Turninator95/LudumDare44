@@ -61,18 +61,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 792d67b1837d7be43a0762c184f8a6e9, type: 2}
   - {fileID: 11400000, guid: 792d67b1837d7be43a0762c184f8a6e9, type: 2}
   - {fileID: 11400000, guid: 792d67b1837d7be43a0762c184f8a6e9, type: 2}
+  - {fileID: 11400000, guid: 87cdde12fd484494ea4299e7f1c1d1d1, type: 2}
   actionTimeout: 0.5
   rageActionTimeout: 0.1
-  movementSpeed: 1
-  rageMovementSpeed: 3
-  initialAmmo: 3
-  maxAmmo: 3
-  currentAmmo: 3
+  movementSpeed: 1.5
+  rageMovementSpeed: 4
+  initialAmmo: 1
+  maxAmmo: 1
+  currentAmmo: 1
   takeDamageWhenFiring: 0
   additionalScoreMin: 2
   duration: 5
-  pickUpObj: {fileID: 6112307639627305387, guid: 4955d72590f76e94eaf246f5f4871505,
-    type: 3}
+  pickUpObj: {fileID: 0}
 --- !u!54 &8634283056716692852
 Rigidbody:
   m_ObjectHideFlags: 0

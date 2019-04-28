@@ -168,12 +168,27 @@ public class Player : MonoBehaviour
         {
             if (currentAmmo - equippedGun.CostPerShot > 0)
             {
-                Bullet bullet = Instantiate(equippedGun.Projectile, gun.transform.GetChild(1).transform.position, gun.transform.rotation).GetComponent<Bullet>();
-                bullet.damage = equippedGun.ProjectileDamage;
-                bullet.speed = equippedGun.ProjectileSpeed;
-                bullet.ignoreTag = tag;
-                bullet.audioClip = equippedGun.SoundEffect;
+                for (int i = 0; i < equippedGun.ShotsAndDirections.Length; i++)
+                {
+                    float angle = equippedGun.ShotsAndDirections[i];
+                
+                
 
+
+                    Bullet bullet = Instantiate(equippedGun.Projectile, gun.transform.GetChild(1).transform.position, gun.transform.rotation).GetComponent<Bullet>();
+                    bullet.damage = equippedGun.ProjectileDamage;
+                    bullet.speed = equippedGun.ProjectileSpeed;
+                    bullet.ignoreTag = tag;
+                    bullet.transform.Rotate(new Vector3(0, angle + Random.Range(-equippedGun.RandomizedAngle,equippedGun.RandomizedAngle), 0));
+                    if (i == 0)
+                    {
+                        bullet.audioClip = equippedGun.SoundEffect;
+                    }else
+                    {
+                        bullet.audioClip = null;
+                    }
+                    
+                }
                 gunReady = false;
 
                 if (equippedGun.AutomaticFire)
