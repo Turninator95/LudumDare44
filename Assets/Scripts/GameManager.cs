@@ -42,10 +42,17 @@ public class GameManager : MonoBehaviour
         {
             enemies.Remove(enemy);
         }
-
+        Debug.Log("Should boot next stage");
         if (enemies.Count == 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1, LoadSceneMode.Single);
+            int i = SceneManager.GetActiveScene().buildIndex + 1;
+            if (i >= SceneManager.sceneCountInBuildSettings)
+            {
+
+                i = 0;
+            }
+            Debug.Log("loading scene with buildindex");
+            SceneManager.LoadSceneAsync(i, LoadSceneMode.Single);
         }
         else if (enemies.Count == 1)
         {
@@ -57,6 +64,6 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex - 1, LoadSceneMode.Single);
+         SceneManager.LoadSceneAsync(0, LoadSceneMode.Single);
     }
 }
