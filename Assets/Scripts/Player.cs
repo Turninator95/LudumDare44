@@ -225,7 +225,11 @@ public class Player : MonoBehaviour
     {
         audioSource.pitch *= Random.Range(0.8f, 1.2f);
         audioSource.Play();
-        currentAmmo -= damage;
+
+        if (currentAmmo - damage <= maxAmmo)
+        {
+            currentAmmo -= damage;
+        }
 
         UpdateHealthBar();
 
