@@ -14042,7 +14042,7 @@ PrefabInstance:
     - target: {fileID: 6294959235819044461, guid: 3fb9bb670a9d1104c98769ac8cca75f8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.56
+      value: -6.44
       objectReference: {fileID: 0}
     - target: {fileID: 6294959235819044461, guid: 3fb9bb670a9d1104c98769ac8cca75f8,
         type: 3}
@@ -14052,7 +14052,7 @@ PrefabInstance:
     - target: {fileID: 6294959235819044461, guid: 3fb9bb670a9d1104c98769ac8cca75f8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 6294959235819044461, guid: 3fb9bb670a9d1104c98769ac8cca75f8,
         type: 3}
@@ -14099,6 +14099,12 @@ PrefabInstance:
       propertyPath: scope
       value: 
       objectReference: {fileID: 812576148}
+    - target: {fileID: 6294959235819044462, guid: 3fb9bb670a9d1104c98769ac8cca75f8,
+        type: 3}
+      propertyPath: equippedGun
+      value: 
+      objectReference: {fileID: 11400000, guid: dc28075ec2844b84ab6d0fa05050748e,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fb9bb670a9d1104c98769ac8cca75f8, type: 3}
 --- !u!1001 &8315814819092126837
