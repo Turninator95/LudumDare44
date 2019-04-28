@@ -85,7 +85,7 @@ MonoBehaviour:
   runningSpeed: 3.71
   fireTimeout: 0.1
   blockMaxTime: 0.5
-  scopeDistance: 1.6
+  scopeDistance: 0.8
   initialAmmo: 3
   maxAmmo: 3
 --- !u!54 &6294959235819044448

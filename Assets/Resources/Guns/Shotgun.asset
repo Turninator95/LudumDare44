@@ -19,7 +19,7 @@ MonoBehaviour:
   randomizedAngle: 5
   projectile: {fileID: 1094163864691010628, guid: 1c667ab30ff045348a6389c78ccf09de,
     type: 3}
-  gunSprite: {fileID: 21300000, guid: 0909d6e292f5bd043a2a474a91a7ee1c, type: 3}
+  gunSprite: {fileID: 21300000, guid: 64937c1d3380cad43a163359bd08ba59, type: 3}
   screenShakeStrength: 0.8
   screenShakeDuration: 0.1
   soundEffect: {fileID: 8300000, guid: fb9ece8962fb0e145bfd57caf945a3cf, type: 3}
