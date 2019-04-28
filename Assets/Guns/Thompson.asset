@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costPerShot: 1
   shotsPerSecond: 10
-  projectileSpeed: 15
+  projectileSpeed: 13
   projectileDamage: 1
-  randomizedAngle: 4
+  randomizedAngle: 7
   projectile: {fileID: 1094163864691010628, guid: f84e232caa031d24893f0772c545b087,
     type: 3}
   gunSprite: {fileID: -6584199384628219108, guid: 4a75cc0b280797247a56f9a6d66b49ba,
