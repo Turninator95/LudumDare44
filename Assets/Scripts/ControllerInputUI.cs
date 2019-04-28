@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Linq;
+using TMPro;
 
 public class ControllerInputUI : MonoBehaviour
 {
@@ -31,10 +32,12 @@ public class ControllerInputUI : MonoBehaviour
             selectActive = true;
             if (currentIndex < buttons.Count - 1)
             {
+                buttons[currentIndex].transform.localScale = Vector3.one;
                 currentIndex++;
             }
             else
             {
+                buttons[currentIndex].transform.localScale = Vector3.one;
                 currentIndex = 0;
             }
             SelectOption();
@@ -44,10 +47,12 @@ public class ControllerInputUI : MonoBehaviour
             selectActive = true;
             if (currentIndex > 0)
             {
+                buttons[currentIndex].transform.localScale = Vector3.one;
                 currentIndex--;
             }
             else
             {
+                buttons[currentIndex].transform.localScale = Vector3.one;
                 currentIndex = buttons.Count - 1;
             }
             SelectOption();
@@ -59,6 +64,7 @@ public class ControllerInputUI : MonoBehaviour
         if (Input.GetAxis("Fire1") > 0 && !buttonClicked)
         {
             buttonClicked = true;
+            buttons[currentIndex].transform.localScale = Vector3.one;
             buttons[currentIndex].onClick.Invoke();
             buttons.Clear();
             buttons.AddRange(FindObjectsOfType<Button>());
@@ -81,5 +87,6 @@ public class ControllerInputUI : MonoBehaviour
     {
         Debug.Log($"{buttons[currentIndex].name} is selected");
         buttons[currentIndex].Select();
+        buttons[currentIndex].transform.localScale *= 1.2f;
     }
 }
