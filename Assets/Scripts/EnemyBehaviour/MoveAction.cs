@@ -23,21 +23,18 @@ public class MoveAction : EnemyActions
         {
             startPosition = rigidbody.position;
             ChangeMovementDirection(enemy);
-            //movementDirection = Quaternion.Euler(0, Random.Range(-180, 181), 0) * enemy.transform.forward;
             startPositionSet = true;
         }
         if (Vector3.Distance(startPosition, enemy.transform.position) < moveDistance)
         {
-            //Debug.DrawRay(enemy.transform.position, movementDirection);
-            //RaycastHit raycastHit;
-            //if (Physics.Raycast(enemy.transform.position, movementDirection, out raycastHit, 1f))
-            //{
-            //    if (raycastHit.collider.tag != "Player" && raycastHit.collider.tag != "Enemy")
-            //    {
-            //        ChangeMovementDirection(enemy);
-            //        //movementDirection = Quaternion.Euler(0, Random.Range(-180, 181), 0) * enemy.transform.forward;
-            //    }
-            //}
+            RaycastHit raycastHit;
+            if (Physics.Raycast(enemy.transform.position, movementDirection, out raycastHit, 1f))
+            {
+                if (raycastHit.collider.tag != "Player" && raycastHit.collider.tag != "Enemy")
+                {
+                    ChangeMovementDirection(enemy);
+                }
+            }
             rigidbody.velocity = movementDirection * enemy.MovementSpeed;
         }
         else
