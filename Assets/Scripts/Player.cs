@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     private float blockTimePassed = 0;
 
     [SerializeField]
-    private int initialAmmo = 20, maxAmmo = 100, costPerShot = 1;
+    private int initialAmmo = 20, maxAmmo = 100;
     private int currentAmmo;
 
     private Rigidbody rigidbody;
@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
 
     public int MaxAmmo { get => maxAmmo; set => maxAmmo = value; }
     public int CurrentAmmo { get => currentAmmo; set => currentAmmo = value; }
+    public int InitialAmmo { get => initialAmmo; set => initialAmmo = value; }
 
 
     // Start is called before the first frame update
@@ -165,7 +166,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetAxis("Fire1") > 0 && gunReady)
         {
-            if (currentAmmo - costPerShot > 0)
+            if (currentAmmo - equippedGun.CostPerShot > 0)
             {
                 Bullet bullet = Instantiate(equippedGun.Projectile, gun.transform.GetChild(1).transform.position, gun.transform.rotation).GetComponent<Bullet>();
                 bullet.damage = equippedGun.ProjectileDamage;
@@ -181,7 +182,7 @@ public class Player : MonoBehaviour
                     StartCoroutine(ResetBulletFired());
                 }
 
-                ProcessDamage(costPerShot);
+                ProcessDamage(equippedGun.CostPerShot);
                 screenShaker.strength += equippedGun.ScreenShakeStrength;
                 screenShaker.duration += equippedGun.ScreenShakeDuration;
                 Debug.Log($"{name} has {currentAmmo} ammo left.");

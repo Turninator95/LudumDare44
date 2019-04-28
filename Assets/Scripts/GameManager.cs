@@ -5,15 +5,35 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    private GameSettings gameSettings;
+    private List<DifficultyMode> difficultyModes = new List<DifficultyMode>();
     private List<Enemy> enemies = new List<Enemy>();
 
-    void Start()
+    private void Awake()
     {
+        gameSettings = Resources.Load<GameSettings>("GameSettings");
+        difficultyModes.AddRange(Resources.LoadAll<DifficultyMode>("DifficultyModes"));
+
+        foreach (DifficultyMode difficultyMode in difficultyModes)
+        {
+            if (difficultyMode.DifficultyLevel == gameSettings.DifficultyLevel)
+            {
+                Player player = FindObjectOfType<Player>();
+                player.MaxAmmo = difficultyMode.PlayerMaxAmmo;
+                player.InitialAmmo = difficultyMode.PlayerInitialAmmo;
+                break;
+            }
+        }
+
     }
-    
-    void Update()
-    {
-    }
+
+    //void Start()
+    //{
+    //}
+
+    //void Update()
+    //{
+    //}
 
     public void EnemySpawned(Enemy enemy)
     {

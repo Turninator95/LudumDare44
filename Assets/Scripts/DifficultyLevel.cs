@@ -2,6 +2,6 @@
 public enum DifficultyLevel
 {
     TrustFundBaby,
-    MiddleClassHousewife,
+    MiddleClassMom,
     AmericanDream
 }
