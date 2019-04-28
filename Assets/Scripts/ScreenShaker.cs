@@ -46,8 +46,26 @@ public class ScreenShaker : MonoBehaviour
             tmpV3 /= positions.Count;
             positions.RemoveAt(0);
         }
+        
+        #if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
+        if (XInputDotNetPure.GamePad.GetState(0).IsConnected)
+        {
+            XInputDotNetPure.GamePad.SetVibration(0, 0, strength);
+        }
+        #endif
+
 
         originalPosition = new Vector3(tmpV3.x, transform.position.y, tmpV3.z);
         transform.position = originalPosition + new Vector3(Random.Range(-amplitude * strength, amplitude * strength), 0, Random.Range(-amplitude * strength, amplitude * strength));
+    }
+
+    private void OnApplicationQuit()
+    {
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
+        if (XInputDotNetPure.GamePad.GetState(0).IsConnected)
+        {
+            XInputDotNetPure.GamePad.SetVibration(0, 0, 0);
+        }
+#endif
     }
 }

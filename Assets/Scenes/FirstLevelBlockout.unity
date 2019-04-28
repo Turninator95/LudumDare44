@@ -12666,12 +12666,12 @@ PrefabInstance:
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
       propertyPath: initialAmmo
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
       propertyPath: maxAmmo
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
@@ -12679,6 +12679,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 792d67b1837d7be43a0762c184f8a6e9,
         type: 2}
+    - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
+        type: 3}
+      propertyPath: currentAmmo
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
+        type: 3}
+      propertyPath: takeDamageWhenFiring
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05d33648c23797d4383dc9b1a05302de, type: 3}
 --- !u!1001 &1874844950
@@ -12756,12 +12766,12 @@ PrefabInstance:
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
       propertyPath: initialAmmo
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
       propertyPath: maxAmmo
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
@@ -12769,6 +12779,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 792d67b1837d7be43a0762c184f8a6e9,
         type: 2}
+    - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
+        type: 3}
+      propertyPath: currentAmmo
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
+        type: 3}
+      propertyPath: takeDamageWhenFiring
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05d33648c23797d4383dc9b1a05302de, type: 3}
 --- !u!1001 &1931016160
@@ -13577,12 +13597,12 @@ PrefabInstance:
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
       propertyPath: initialAmmo
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
       propertyPath: maxAmmo
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
@@ -13590,6 +13610,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 792d67b1837d7be43a0762c184f8a6e9,
         type: 2}
+    - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
+        type: 3}
+      propertyPath: currentAmmo
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
+        type: 3}
+      propertyPath: takeDamageWhenFiring
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05d33648c23797d4383dc9b1a05302de, type: 3}
 --- !u!1001 &2108733031
@@ -13904,12 +13934,12 @@ PrefabInstance:
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
       propertyPath: initialAmmo
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
       propertyPath: maxAmmo
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
@@ -13917,6 +13947,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 792d67b1837d7be43a0762c184f8a6e9,
         type: 2}
+    - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
+        type: 3}
+      propertyPath: currentAmmo
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
+        type: 3}
+      propertyPath: takeDamageWhenFiring
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05d33648c23797d4383dc9b1a05302de, type: 3}
 --- !u!1001 &6294959235223275896
