@@ -32,8 +32,14 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerStatus = Resources.Load<PlayerStatus>("PlayerStatus");
         FindReferences();
+        foreach (PlayerUpgrade playerUpgrade in playerStatus.PlayerUpgrades)
+        {
+            if (playerUpgrade.GetType() == typeof(MaxAmmoUpgrade))
+            {
+                playerStatus.MaxAmmo++;
+            }
+        }
         UpdateHealthBar();
         gun.GetComponentInChildren<SpriteRenderer>().sprite = playerStatus.EquippedGun.GunSprite;
     }
@@ -75,6 +81,7 @@ public class Player : MonoBehaviour
         {
             scope = GameObject.Find("Scope");
         }
+        playerStatus = Resources.Load<PlayerStatus>("PlayerStatus");
     }
 
     private void UpdateHealthBar()
@@ -222,6 +229,7 @@ public class Player : MonoBehaviour
         Debug.Log("You can shoot again!!!!!");
         gunReady = true;
     }
+
     public void ProcessDamage(int damage)
     {
         audioSource.pitch *= Random.Range(0.8f, 1.2f);
@@ -238,6 +246,17 @@ public class Player : MonoBehaviour
         {
             Debug.Log("We ded");
             gameManager.GameOver();
+        }
+    }
+
+    public void StageCompleted()
+    {
+        foreach (PlayerUpgrade playerUpgrade in playerStatus.PlayerUpgrades)
+        {
+            if (playerUpgrade.GetType() == typeof(AmmoDropUpgrade))
+            {
+                ProcessDamage(-1);
+            }
         }
     }
 }
