@@ -59,7 +59,7 @@ public class ScreenShaker : MonoBehaviour
         transform.position = originalPosition + new Vector3(Random.Range(-amplitude * strength, amplitude * strength), 0, Random.Range(-amplitude * strength, amplitude * strength));
     }
 
-    private void OnApplicationQuit()
+    private void OnDestroy()
     {
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
         if (XInputDotNetPure.GamePad.GetState(0).IsConnected)
