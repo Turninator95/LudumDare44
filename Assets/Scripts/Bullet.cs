@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class Bullet : MonoBehaviour
 {
-    public string ignoreTag;
+    public string bulletSource;
     public float speed = 1;
     public int damage = 1;
     private AudioSource audioSource;
@@ -35,7 +35,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag != ignoreTag)
+        if (other.tag != bulletSource)
         {
             if (other.tag == "Player")
             {
@@ -54,10 +54,14 @@ public class Bullet : MonoBehaviour
                 return;
             }
 
-            else if (other.tag == "Block" && ignoreTag != "Player")
+            else if (other.tag == "Block" && bulletSource != "Player")
             {
                 GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().ProcessDamage(-damage);
                 Destroy(gameObject);
+            }
+            else if (other.tag == "Block" && bulletSource == "Player")
+            {
+                return;
             }
 
             Destroy(gameObject);

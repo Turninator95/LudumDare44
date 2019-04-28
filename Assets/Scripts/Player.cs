@@ -178,7 +178,7 @@ public class Player : MonoBehaviour
                     Bullet bullet = Instantiate(equippedGun.Projectile, gun.transform.GetChild(1).transform.position, gun.transform.rotation).GetComponent<Bullet>();
                     bullet.damage = equippedGun.ProjectileDamage;
                     bullet.speed = equippedGun.ProjectileSpeed;
-                    bullet.ignoreTag = tag;
+                    bullet.bulletSource = tag;
                     bullet.transform.Rotate(new Vector3(0, angle + Random.Range(-equippedGun.RandomizedAngle,equippedGun.RandomizedAngle), 0));
                     if (i == 0)
                     {
