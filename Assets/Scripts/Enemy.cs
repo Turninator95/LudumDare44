@@ -21,14 +21,16 @@ public class Enemy : MonoBehaviour
     private float movementSpeed = 1f, rageMovementSpeed = 3f;
     [SerializeField, Header("Ammo")]
     private int initialAmmo = 20;
+    
     [SerializeField]
-    private int maxAmmo = 100;
+    private int maxAmmo = 100, ragemodeAmmo =3;
     public int currentAmmo;
     private bool timeoutActive = false;
     private AudioSource audioSource;
     private GameManager gameManager;
     [SerializeField]
     public bool takeDamageWhenFiring = true;
+    
 
     GameObject player;
     [SerializeField]
@@ -139,5 +141,6 @@ public class Enemy : MonoBehaviour
         actions = rageActions;
         actionTimeout = rageActionTimeout;
         movementSpeed = rageMovementSpeed;
+        currentAmmo = ragemodeAmmo;
     }
 }
