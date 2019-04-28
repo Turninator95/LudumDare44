@@ -68,11 +68,14 @@ MonoBehaviour:
   rageMovementSpeed: 4
   initialAmmo: 1
   maxAmmo: 1
+  ragemodeAmmo: 3
   currentAmmo: 1
   takeDamageWhenFiring: 0
   additionalScoreMin: 2
   duration: 5
   pickUpObj: {fileID: 0}
+  hit: {fileID: 3287611759748998834, guid: fe290154c3747c1498990b9bfbdbddac, type: 3}
+  death: {fileID: 8301722550608404674, guid: 76b4e09f8e6f9b347b154521e611ae50, type: 3}
 --- !u!54 &8634283056716692852
 Rigidbody:
   m_ObjectHideFlags: 0
