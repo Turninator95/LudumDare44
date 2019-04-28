@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fbae8019c146094aaa2edf001b7f9be, type: 3}
   m_Name: Move
   m_EditorClassIdentifier: 
-  moveDistance: 2
+  moveDistance: 1
