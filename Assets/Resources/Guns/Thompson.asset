@@ -14,13 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costPerShot: 1
   shotsPerSecond: 10
-  projectileSpeed: 15
+  projectileSpeed: 13
   projectileDamage: 1
   randomizedAngle: 4
   projectile: {fileID: 1094163864691010628, guid: f84e232caa031d24893f0772c545b087,
     type: 3}
-  gunSprite: {fileID: -6584199384628219108, guid: 4a75cc0b280797247a56f9a6d66b49ba,
-    type: 3}
+  gunSprite: {fileID: 21300000, guid: 0d62a00675bed4b4b8f4ed86900f1204, type: 3}
   screenShakeStrength: 0.2
   screenShakeDuration: 0.1
   soundEffect: {fileID: 8300000, guid: fb9ece8962fb0e145bfd57caf945a3cf, type: 3}
