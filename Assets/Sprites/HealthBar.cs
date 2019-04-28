@@ -14,8 +14,6 @@ public class HealthBar : MonoBehaviour
 
     void Start()
     {
-    //    healthBar = GetComponent<Image>();
-    //    healthBar2 = GetComponent<Image>();
         health = maxHealth;
     }
 

@@ -146,8 +146,8 @@ public class Enemy : MonoBehaviour
             tmpMoneyPickup.transform.position = transform.position;
             tmpMoneyPickup.lifetime = duration;
             Player tmpPlayer = player.GetComponent<Player>();
-            int tmpMax = tmpPlayer.MaxAmmo - tmpPlayer.CurrentAmmo;
-            tmpMax = Mathf.Clamp(tmpMax, additionalScoreMin +1,  tmpPlayer.MaxAmmo);
+            int tmpMax = tmpPlayer.PlayerStatus.MaxAmmo - tmpPlayer.PlayerStatus.CurrentAmmo;
+            tmpMax = Mathf.Clamp(tmpMax, additionalScoreMin +1,  tmpPlayer.PlayerStatus.MaxAmmo);
             tmpMoneyPickup.bonusLifes = Mathf.FloorToInt(Random.Range(additionalScoreMin, tmpMax));
 
         }

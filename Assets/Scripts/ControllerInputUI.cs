@@ -80,11 +80,16 @@ public class ControllerInputUI : MonoBehaviour
             buttons.AddRange(FindObjectsOfType<Button>());
             if (buttons.Count > 0)
             {
-                buttons = buttons.OrderByDescending(x => x.transform.localPosition.y).ToList();
-                if (currentIndex > buttons.Count - 1)
+                if (horizontalButtons)
                 {
-                    currentIndex = 0;
+                    buttons = buttons.OrderByDescending(x => x.transform.localPosition.x).ToList();
                 }
+                else
+                {
+                    buttons = buttons.OrderByDescending(x => x.transform.localPosition.y).ToList();
+                }
+                currentIndex = 0;
+                
                 SelectOption();
             }
         }
@@ -97,6 +102,6 @@ public class ControllerInputUI : MonoBehaviour
     {
         Debug.Log($"{buttons[currentIndex].name} is selected");
         buttons[currentIndex].Select();
-        buttons[currentIndex].transform.localScale *= 1.2f;
+        buttons[currentIndex].transform.localScale *= 1.4f;
     }
 }

@@ -7,8 +7,6 @@ public class Player : MonoBehaviour
     [Header("References"), SerializeField]
     private GameObject scope;
     [SerializeField]
-    private Gun equippedGun;
-    [SerializeField]
     private GameObject gun;
     [SerializeField, Range(1.0f, 20.0f)]
     [Header("Variables")]
@@ -20,10 +18,6 @@ public class Player : MonoBehaviour
     private float blockMaxTime = 0.5f, scopeDistance = 2;
     private float blockTimePassed = 0;
 
-    [SerializeField]
-    private int initialAmmo = 20, maxAmmo = 100;
-    private int currentAmmo;
-
     private Rigidbody rigidbody;
     private GameObject blockObject;
     private ScreenShaker screenShaker;
@@ -31,19 +25,17 @@ public class Player : MonoBehaviour
     private AudioSource audioSource;
     private HealthBar healthBar;
     private GameManager gameManager;
+    private PlayerStatus playerStatus;
 
-    public int MaxAmmo { get => maxAmmo; set => maxAmmo = value; }
-    public int CurrentAmmo { get => currentAmmo; set => currentAmmo = value; }
-    public int InitialAmmo { get => initialAmmo; set => initialAmmo = value; }
-
+    public PlayerStatus PlayerStatus { get => playerStatus; set => playerStatus = value; }
 
     // Start is called before the first frame update
     void Start()
     {
-        currentAmmo = initialAmmo;
+        playerStatus = Resources.Load<PlayerStatus>("PlayerStatus");
         FindReferences();
         UpdateHealthBar();
-        gun.GetComponentInChildren<SpriteRenderer>().sprite = equippedGun.GunSprite;
+        gun.GetComponentInChildren<SpriteRenderer>().sprite = playerStatus.EquippedGun.GunSprite;
     }
 
     // Update is called once per frame
@@ -54,12 +46,14 @@ public class Player : MonoBehaviour
         ProcessShooting();
         ProcessBlocking();
 
-        if (currentAmmo <= 0)
+        if (playerStatus.CurrentAmmo <= 0)
         {
             gameManager.GameOver();
             Destroy(gameObject);
             Debug.Log("YOU DED SON");
         }
+
+        UpdateHealthBar();
     }
 
     private void FindReferences()
@@ -85,9 +79,9 @@ public class Player : MonoBehaviour
 
     private void UpdateHealthBar()
     {
-        healthBar.maxHealth = maxAmmo;
-        healthBar.health = currentAmmo;
-        healthBar.shotDamage = equippedGun.CostPerShot;
+        healthBar.maxHealth = playerStatus.MaxAmmo;
+        healthBar.health = playerStatus.CurrentAmmo;
+        healthBar.shotDamage = playerStatus.EquippedGun.CostPerShot;
     }
 
     private void ProcessMovementInput()
@@ -126,7 +120,6 @@ public class Player : MonoBehaviour
         {
             Vector3 mousePos = Vector3.zero;
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
             mousePos.y = gun.transform.position.y;
             Vector3 tmpGunPos = gun.transform.position;
             tmpGunPos.Scale(new Vector3(1, 0, 1));
@@ -137,7 +130,6 @@ public class Player : MonoBehaviour
                 scope.transform.LookAt(mousePos);
                 scope.transform.position += scope.transform.forward * scopeDistance;
                 scope.transform.eulerAngles = Vector3.zero;
-
             }
             else
             {
@@ -160,47 +152,41 @@ public class Player : MonoBehaviour
         }
     }
 
-
-
-        private void ProcessShooting()
+    private void ProcessShooting()
     {
         if (Input.GetAxis("Fire1") > 0 && gunReady)
         {
-            if (currentAmmo - equippedGun.CostPerShot > 0)
+            if (playerStatus.CurrentAmmo - playerStatus.EquippedGun.CostPerShot > 0)
             {
-                for (int i = 0; i < equippedGun.ShotsAndDirections.Length; i++)
+                for (int i = 0; i < playerStatus.EquippedGun.ShotsAndDirections.Length; i++)
                 {
-                    float angle = equippedGun.ShotsAndDirections[i];
-                
-                
-
-
-                    Bullet bullet = Instantiate(equippedGun.Projectile, gun.transform.GetChild(1).transform.position, gun.transform.rotation).GetComponent<Bullet>();
-                    bullet.damage = equippedGun.ProjectileDamage;
-                    bullet.speed = equippedGun.ProjectileSpeed;
+                    float angle = playerStatus.EquippedGun.ShotsAndDirections[i];
+                    Bullet bullet = Instantiate(playerStatus.EquippedGun.Projectile, gun.transform.GetChild(1).transform.position, gun.transform.rotation).GetComponent<Bullet>();
+                    bullet.damage = playerStatus.EquippedGun.ProjectileDamage;
+                    bullet.speed = playerStatus.EquippedGun.ProjectileSpeed;
                     bullet.bulletSource = tag;
-                    bullet.transform.Rotate(new Vector3(0, angle + Random.Range(-equippedGun.RandomizedAngle,equippedGun.RandomizedAngle), 0));
+                    bullet.transform.Rotate(new Vector3(0, angle + Random.Range(-playerStatus.EquippedGun.RandomizedAngle, playerStatus.EquippedGun.RandomizedAngle), 0));
                     if (i == 0)
                     {
-                        bullet.audioClip = equippedGun.SoundEffect;
-                    }else
+                        bullet.audioClip = playerStatus.EquippedGun.SoundEffect;
+                    }
+                    else
                     {
                         bullet.audioClip = null;
                     }
-                    
                 }
                 gunReady = false;
 
-                if (equippedGun.AutomaticFire)
+                if (playerStatus.EquippedGun.AutomaticFire)
                 {
-                    fireTimeout = (float)1 / equippedGun.ShotsPerSecond; 
+                    fireTimeout = (float)1 / playerStatus.EquippedGun.ShotsPerSecond;
                     StartCoroutine(ResetBulletFired());
                 }
 
-                ProcessDamage(equippedGun.CostPerShot);
-                screenShaker.strength += equippedGun.ScreenShakeStrength;
-                screenShaker.duration += equippedGun.ScreenShakeDuration;
-                Debug.Log($"{name} has {currentAmmo} ammo left.");
+                ProcessDamage(playerStatus.EquippedGun.CostPerShot);
+                screenShaker.strength += playerStatus.EquippedGun.ScreenShakeStrength;
+                screenShaker.duration += playerStatus.EquippedGun.ScreenShakeDuration;
+                Debug.Log($"{name} has {playerStatus.CurrentAmmo} ammo left.");
             }
         }
         else if (Input.GetAxis("Fire1") == 0)
@@ -241,14 +227,14 @@ public class Player : MonoBehaviour
         audioSource.pitch *= Random.Range(0.8f, 1.2f);
         audioSource.Play();
 
-        if (currentAmmo - damage <= maxAmmo)
+        if (playerStatus.CurrentAmmo - damage <= playerStatus.MaxAmmo)
         {
-            currentAmmo -= damage;
+            playerStatus.CurrentAmmo -= damage;
         }
 
         UpdateHealthBar();
 
-        if (currentAmmo <= 0)
+        if (playerStatus.CurrentAmmo <= 0)
         {
             Debug.Log("We ded");
             gameManager.GameOver();

@@ -19,12 +19,11 @@ public class GameManager : MonoBehaviour
             if (difficultyMode.DifficultyLevel == gameSettings.DifficultyLevel)
             {
                 Player player = FindObjectOfType<Player>();
-                player.MaxAmmo = difficultyMode.PlayerMaxAmmo;
-                player.InitialAmmo = difficultyMode.PlayerInitialAmmo;
+                player.PlayerStatus.MaxAmmo = difficultyMode.PlayerMaxAmmo;
+                player.PlayerStatus.InitialAmmo = difficultyMode.PlayerInitialAmmo;
                 break;
             }
         }
-
     }
 
     public void EnemySpawned(Enemy enemy)
