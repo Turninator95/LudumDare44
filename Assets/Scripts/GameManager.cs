@@ -6,11 +6,13 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     private GameSettings gameSettings;
+    private PlayerStatus playerStatus;
     private List<DifficultyMode> difficultyModes = new List<DifficultyMode>();
     private List<Enemy> enemies = new List<Enemy>();
 
     private void Awake()
     {
+        playerStatus = Resources.Load<PlayerStatus>("PlayerStatus");
         gameSettings = Resources.Load<GameSettings>("GameSettings");
         difficultyModes.AddRange(Resources.LoadAll<DifficultyMode>("DifficultyModes"));
 
@@ -18,9 +20,8 @@ public class GameManager : MonoBehaviour
         {
             if (difficultyMode.DifficultyLevel == gameSettings.DifficultyLevel)
             {
-                Player player = FindObjectOfType<Player>();
-                player.PlayerStatus.MaxAmmo = difficultyMode.PlayerMaxAmmo;
-                player.PlayerStatus.InitialAmmo = difficultyMode.PlayerInitialAmmo;
+                playerStatus.MaxAmmo = difficultyMode.PlayerMaxAmmo;
+                playerStatus.InitialAmmo = difficultyMode.PlayerInitialAmmo;
                 break;
             }
         }
