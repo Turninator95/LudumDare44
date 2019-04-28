@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: ee254582599949c41b03df8250eeb44d
   - enabled: 1
-    path: Assets/Scenes/FirstLevelBlockout.unity
-    guid: 4df70aae11ba8ce4f94a2e269d06f0de
+    path: Assets/Scenes/Stage01.unity
+    guid: e2bac02c67f8f964481d74c62917c61d
   m_configObjects: {}

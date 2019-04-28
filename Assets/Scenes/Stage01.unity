@@ -27728,8 +27728,8 @@ Camera:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.52156866, g: 0.73333335, b: 0.39607844, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -27746,7 +27746,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.29
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -28471,7 +28471,7 @@ PrefabInstance:
     - target: {fileID: 6294959235819044462, guid: 3fb9bb670a9d1104c98769ac8cca75f8,
         type: 3}
       propertyPath: scopeDistance
-      value: 1.5
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 8648528581563255772, guid: 3fb9bb670a9d1104c98769ac8cca75f8,
         type: 3}
