@@ -27954,7 +27954,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &812576148 stripped
 GameObject:
@@ -28819,6 +28819,16 @@ PrefabInstance:
         type: 3}
       propertyPath: scopeDistance
       value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1816414075338327228, guid: 3fb9bb670a9d1104c98769ac8cca75f8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 1816414075338327228, guid: 3fb9bb670a9d1104c98769ac8cca75f8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8648528581563255772, guid: 3fb9bb670a9d1104c98769ac8cca75f8,
         type: 3}

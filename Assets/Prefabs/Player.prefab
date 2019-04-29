@@ -89,7 +89,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f19ad3f201453144a12c25d8fbb6f43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 7603752559537032692}
 --- !u!1 &1816414075461756398
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,11 +496,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 8120208178362799804, guid: 4daba5a68e95f9d49aee781041c154df,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8120208178362799805, guid: 4daba5a68e95f9d49aee781041c154df,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -557,17 +551,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8120208178362799804, guid: 4daba5a68e95f9d49aee781041c154df,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4daba5a68e95f9d49aee781041c154df, type: 3}
 --- !u!4 &7603752559537032693 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8120208178362799805, guid: 4daba5a68e95f9d49aee781041c154df,
-    type: 3}
-  m_PrefabInstance: {fileID: 1816414075557862216}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &7603752559537032692 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 8120208178362799804, guid: 4daba5a68e95f9d49aee781041c154df,
     type: 3}
   m_PrefabInstance: {fileID: 1816414075557862216}
   m_PrefabAsset: {fileID: 0}
