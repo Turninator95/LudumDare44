@@ -18,18 +18,17 @@ public class MoveToPlayerAction : EnemyActions
 
         if (Vector3.Distance(startPosition, enemy.transform.position) < moveDistance && Vector3.Distance(enemy.transform.position, player.transform.position) >= playerDistance)
         {
-            RaycastHit raycastHit;
-            if (Physics.Raycast(enemy.transform.position, movementDirection, out raycastHit, 1f))
+            Collider[] colliders = Physics.OverlapBox(enemy.transform.position, enemy.transform.localScale / 2);
+
+            foreach (Collider collider in colliders)
             {
-                if (raycastHit.collider.tag != "Player" && raycastHit.collider.tag != "Enemy" && raycastHit.collider.tag != "Bullet")
+                if (collider.tag != "Player" && collider.tag != "Enemy" && collider.tag != "Bullet")
                 {
-                    MoveCompleted(enemy);
+                    ChangeMovementDirection(enemy);
+                    break;
                 }
             }
-            else
-            {
-                rigidbody.velocity = movementDirection * enemy.MovementSpeed;
-            }
+            rigidbody.velocity = movementDirection * enemy.MovementSpeed;
         }
         else
         {
@@ -42,6 +41,11 @@ public class MoveToPlayerAction : EnemyActions
         rigidbody.velocity = Vector3.zero;
         startPositionSet = false;
         enemy.ActionCompleted();
+    }
+
+    public void ChangeMovementDirection(Enemy enemy)
+    {
+        movementDirection = Quaternion.Euler(0, Random.Range(-180, 181), 0) * enemy.transform.forward;
     }
 
     private void CheckVariables(Enemy enemy)
