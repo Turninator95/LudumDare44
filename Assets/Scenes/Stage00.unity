@@ -1208,7 +1208,7 @@ PrefabInstance:
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
       propertyPath: rageActionTimeout
-      value: 0.5
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
@@ -3338,7 +3338,7 @@ PrefabInstance:
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
       propertyPath: rageActionTimeout
-      value: 0.5
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 5866905189490557120, guid: 05d33648c23797d4383dc9b1a05302de,
         type: 3}
