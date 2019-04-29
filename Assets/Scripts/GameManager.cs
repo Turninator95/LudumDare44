@@ -56,7 +56,15 @@ public class GameManager : MonoBehaviour
             Debug.Log("loading scene with buildindex");
             FindObjectOfType<Player>().StageCompleted();
             gameSettings.LevelIndex = i;
-            SceneManager.LoadSceneAsync(SceneManager.sceneCountInBuildSettings - 1, LoadSceneMode.Single);
+            if (gameSettings.LevelIndex != 0)
+            {
+                SceneManager.LoadSceneAsync(SceneManager.sceneCountInBuildSettings - 1, LoadSceneMode.Single);
+            }
+            else
+            {
+                SceneManager.LoadSceneAsync(gameSettings.LevelIndex, LoadSceneMode.Single);
+            }
+            
         }
         else if (enemies.Count == 1)
         {

@@ -7,6 +7,7 @@ public class GameSettings : ScriptableObject
 {
     [SerializeField]
     private DifficultyLevel difficultyLevel;
+    [SerializeField, HideInInspector]
     private int levelIndex = 0; 
     #region Properties
     public DifficultyLevel DifficultyLevel { get => difficultyLevel; set => difficultyLevel = value; }

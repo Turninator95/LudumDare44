@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Player Status")]
+[CreateAssetMenu(menuName = "Player Status"), System.Serializable]
 public class PlayerStatus : ScriptableObject
 {
     [SerializeField]

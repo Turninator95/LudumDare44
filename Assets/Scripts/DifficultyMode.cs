@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Difficulty Mode")]
+[CreateAssetMenu(menuName = "Difficulty Mode"), System.Serializable]
 public class DifficultyMode : ScriptableObject
 {
     [SerializeField]
