@@ -39,7 +39,7 @@ public class Bullet : MonoBehaviour
         {
             if (other.tag == "Player")
             {
-                other.gameObject.GetComponent<Player>().ProcessDamage(damage);
+                other.gameObject.GetComponentInChildren<Player>().ProcessDamage(damage);
                 Destroy(gameObject);
             }
 
@@ -56,7 +56,7 @@ public class Bullet : MonoBehaviour
 
             else if (other.tag == "Block" && bulletSource != "Player")
             {
-                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().ProcessDamage(-damage);
+                GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Player>().ProcessDamage(-damage);
                 Destroy(gameObject);
             }
             else if (other.tag == "Block" && bulletSource == "Player")

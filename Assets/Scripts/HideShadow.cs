@@ -8,7 +8,14 @@ public class HideShadow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+        foreach (var item in GetComponentsInChildren<SpriteRenderer>())
+        {
+            if (item.name.Contains("Shadow"))
+            {
+                spriteRenderer = item;
+            }
+        }
     }
 
     // Update is called once per frame

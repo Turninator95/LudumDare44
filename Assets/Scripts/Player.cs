@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
             screenShaker = Camera.main.gameObject.AddComponent<ScreenShaker>();
         }
 
-        rigidbody = gameObject.GetComponent<Rigidbody>();
+        rigidbody = gameObject.transform.parent.GetComponent<Rigidbody>();
         blockObject = GameObject.Find("BlockObj");
         if (scope == null)
         {

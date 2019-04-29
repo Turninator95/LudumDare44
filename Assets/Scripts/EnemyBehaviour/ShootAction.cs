@@ -10,7 +10,7 @@ public class ShootAction : EnemyActions
     {
         if (player == null)
         {
-            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+            player = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Player>();
         }
 
         RaycastHit raycastHit;
