@@ -30,7 +30,6 @@ public class Enemy : MonoBehaviour
     private GameManager gameManager;
     [SerializeField]
     public bool takeDamageWhenFiring = true;
-    
 
     GameObject player;
     [SerializeField]
@@ -66,12 +65,13 @@ public class Enemy : MonoBehaviour
 
         actions = instancedActions;
 
-        instancedActions.Clear();
+        List<EnemyActions> instancedRageActions = new List<EnemyActions>();
+
         foreach (EnemyActions item in rageActions)
         {
-            instancedActions.Add(Instantiate(item));
+            instancedRageActions.Add(Instantiate(item));
         }
-        rageActions = instancedActions;
+        rageActions = instancedRageActions;
     }
 
     private void Start()
