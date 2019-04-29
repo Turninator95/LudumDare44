@@ -80,11 +80,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scope: {fileID: 0}
+  equippedGun: {fileID: 11400000, guid: 8dac5c1181089384c8c4054a96b0b03e, type: 2}
   gun: {fileID: 6294959237159924769}
   runningSpeed: 3.71
   fireTimeout: 0.1
-  blockMaxTime: 0.7
+  blockMaxTime: 0.5
   scopeDistance: 0.8
+  initialAmmo: 3
+  maxAmmo: 3
 --- !u!54 &6294959235819044448
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -464,7 +467,7 @@ BoxCollider:
   m_GameObject: {fileID: 6404354030129550181}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -491,7 +494,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6404354030129550181}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f19ad3f201453144a12c25d8fbb6f43, type: 3}
   m_Name: 
@@ -566,7 +569,7 @@ PrefabInstance:
     - target: {fileID: 8120208178362799804, guid: 4daba5a68e95f9d49aee781041c154df,
         type: 3}
       propertyPath: m_SortingOrder
-      value: -1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4daba5a68e95f9d49aee781041c154df, type: 3}
