@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: AmericanDream
   m_EditorClassIdentifier: 
   difficultyLevel: 2
-  playerInitialAmmo: 18
-  playerMaxAmmo: 18
+  playerInitialAmmo: 4
+  playerMaxAmmo: 4
