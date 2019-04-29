@@ -7,10 +7,15 @@ using TMPro;
 
 public class UpgradeScreen : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
-    public GameObject explanationUpgrade;
+    [SerializeField]
+    private GameObject explanationUpgrade;
+    [SerializeField]
+    private PlayerUpgrade playerUpgrade;
     private HealthBar healthBar;
 
-    public void Start()
+    public PlayerUpgrade PlayerUpgrade { get => playerUpgrade; set => playerUpgrade = value; }
+
+    public void Awake()
     {
         healthBar = FindObjectOfType<HealthBar>();
     }
@@ -18,6 +23,14 @@ public class UpgradeScreen : MonoBehaviour, ISelectHandler, IDeselectHandler
     public void OnSelect(BaseEventData eventData)
     {
         explanationUpgrade.gameObject.SetActive(true);
+        if (playerUpgrade != null)
+        {
+            healthBar.shotDamage = playerUpgrade.UpgradeCost;
+        }
+        else
+        {
+            healthBar.shotDamage = 0;
+        }
     }
 
     public void OnDeselect(BaseEventData eventData)

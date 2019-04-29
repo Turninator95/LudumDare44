@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     {
         playerStatus = Resources.Load<PlayerStatus>("PlayerStatus");
         gameSettings = Resources.Load<GameSettings>("GameSettings");
+
+        gameSettings.LevelIndex = SceneManager.GetActiveScene().buildIndex;
+
         difficultyModes.AddRange(Resources.LoadAll<DifficultyMode>("DifficultyModes"));
 
         foreach (DifficultyMode difficultyMode in difficultyModes)
@@ -46,14 +49,14 @@ public class GameManager : MonoBehaviour
         if (enemies.Count == 0)
         {
             int i = SceneManager.GetActiveScene().buildIndex + 1;
-            if (i >= SceneManager.sceneCountInBuildSettings)
+            if (i >= SceneManager.sceneCountInBuildSettings - 1)
             {
-
                 i = 0;
             }
             Debug.Log("loading scene with buildindex");
             FindObjectOfType<Player>().StageCompleted();
-            SceneManager.LoadSceneAsync(i, LoadSceneMode.Single);
+            gameSettings.LevelIndex = i;
+            SceneManager.LoadSceneAsync(SceneManager.sceneCountInBuildSettings - 1, LoadSceneMode.Single);
         }
         else if (enemies.Count == 1)
         {

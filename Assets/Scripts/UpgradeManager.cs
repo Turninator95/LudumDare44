@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UpgradeManager : MonoBehaviour
 {
+    [SerializeField]
+    private UpgradeScreen gunButton;
     private PlayerStatus playerStatus;
     private List<WeaponUpgrade> weaponUpgrades = new List<WeaponUpgrade>();
     private WeaponUpgrade currentWeaponUpgrade;
@@ -13,10 +16,12 @@ public class UpgradeManager : MonoBehaviour
     [SerializeField]
     private TMP_Text gunText;
     private HealthBar healthBar;
+    private GameSettings gameSettings;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameSettings = Resources.Load<GameSettings>("GameSettings");
         healthBar = FindObjectOfType<HealthBar>();
         playerStatus = Resources.Load<PlayerStatus>("PlayerStatus");
         ammoDropUpgrade = Resources.Load<AmmoDropUpgrade>("PlayerUpgrades/AmmoDrop");
@@ -32,8 +37,8 @@ public class UpgradeManager : MonoBehaviour
 
         currentWeaponUpgrade = weaponUpgrades[index];
         gunText.text = $"Cost: {currentWeaponUpgrade.UpgradeCost}\n{currentWeaponUpgrade.GunToEquip.name}";
-        healthBar.maxHealth = playerStatus.MaxAmmo;
-        healthBar.health = playerStatus.CurrentAmmo;
+        gunButton.PlayerUpgrade = currentWeaponUpgrade;
+        UpdateHealthBar();
     }
 
     // Update is called once per frame
@@ -48,6 +53,7 @@ public class UpgradeManager : MonoBehaviour
         {
             playerStatus.CurrentAmmo -= maxAmmoUpgrade.UpgradeCost;
             playerStatus.PlayerUpgrades.Add(maxAmmoUpgrade);
+            UpdateHealthBar();
         }
     }
     public void UnlockAmmoDropUpgrade()
@@ -56,6 +62,7 @@ public class UpgradeManager : MonoBehaviour
         {
             playerStatus.CurrentAmmo -= ammoDropUpgrade.UpgradeCost;
             playerStatus.PlayerUpgrades.Add(ammoDropUpgrade);
+            UpdateHealthBar();
         }
     }
     public void UnlockWeaponUpgrade()
@@ -64,6 +71,18 @@ public class UpgradeManager : MonoBehaviour
         {
             playerStatus.CurrentAmmo -= currentWeaponUpgrade.UpgradeCost;
             playerStatus.EquippedGun = currentWeaponUpgrade.GunToEquip;
+            UpdateHealthBar();
         }
+    }
+
+    public void LoadNextLevel()
+    {
+        SceneManager.LoadSceneAsync(gameSettings.LevelIndex, LoadSceneMode.Single);
+    }
+
+    private void UpdateHealthBar()
+    {
+        healthBar.maxHealth = playerStatus.MaxAmmo;
+        healthBar.health = playerStatus.CurrentAmmo;
     }
 }

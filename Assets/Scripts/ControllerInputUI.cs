@@ -22,7 +22,7 @@ public class ControllerInputUI : MonoBehaviour
         {
             if (horizontalButtons)
             {
-                buttons = buttons.OrderByDescending(x => x.transform.localPosition.x).ToList();
+                buttons = buttons.OrderBy(x => x.transform.localPosition.x).ToList();
             }
             else
             {
@@ -37,7 +37,7 @@ public class ControllerInputUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("Vertical") < 0 && !selectActive)
+        if (Input.GetAxis("Vertical") < 0 && !selectActive && !horizontalButtons || Input.GetAxis("Horizontal") > 0 && !selectActive && horizontalButtons)
         {
             selectActive = true;
             if (currentIndex < buttons.Count - 1)
@@ -52,7 +52,7 @@ public class ControllerInputUI : MonoBehaviour
             }
             SelectOption();
         }
-        else if (Input.GetAxis("Vertical") > 0 && !selectActive)
+        else if (Input.GetAxis("Vertical") > 0 && !selectActive && !horizontalButtons || Input.GetAxis("Horizontal") < 0 && !selectActive && horizontalButtons)
         {
             selectActive = true;
             if (currentIndex > 0)
@@ -67,7 +67,7 @@ public class ControllerInputUI : MonoBehaviour
             }
             SelectOption();
         }
-        else if (Input.GetAxis("Vertical") == 0)
+        else if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
         {
             selectActive = false;
         }
@@ -82,7 +82,7 @@ public class ControllerInputUI : MonoBehaviour
             {
                 if (horizontalButtons)
                 {
-                    buttons = buttons.OrderByDescending(x => x.transform.localPosition.x).ToList();
+                    buttons = buttons.OrderBy(x => x.transform.localPosition.x).ToList();
                 }
                 else
                 {

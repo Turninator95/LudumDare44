@@ -20,13 +20,13 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.52156866, g: 0.73333335, b: 0.39607844, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -155,8 +155,8 @@ Camera:
   m_GameObject: {fileID: 46308846}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.52156866, g: 0.73333335, b: 0.39607844, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -360,12 +360,18 @@ PrefabInstance:
       propertyPath: m_Pivot.x
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 983993274923420103, guid: f670cbd03f35bb443b6c8ee3fd867415,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 983993276258545081, guid: f670cbd03f35bb443b6c8ee3fd867415,
         type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 983993275784871359, guid: f670cbd03f35bb443b6c8ee3fd867415, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f670cbd03f35bb443b6c8ee3fd867415, type: 3}
 --- !u!1 &294315918
 GameObject:
@@ -832,6 +838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explanationUpgrade: {fileID: 492151951}
+  playerUpgrade: {fileID: 11400000, guid: b701ea5d81652424487433e899502403, type: 2}
 --- !u!1 &492151951
 GameObject:
   m_ObjectHideFlags: 0
@@ -1575,7 +1582,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1208785435}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1243298286}
+        m_MethodName: LoadNextLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1208785435
@@ -1628,6 +1646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explanationUpgrade: {fileID: 403354216}
+  playerUpgrade: {fileID: 0}
 --- !u!1 &1243298281
 GameObject:
   m_ObjectHideFlags: 0
@@ -1641,6 +1660,7 @@ GameObject:
   - component: {fileID: 1243298283}
   - component: {fileID: 1243298282}
   - component: {fileID: 1243298286}
+  - component: {fileID: 1243298287}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1748,7 +1768,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f3aed2213d9d9f4c9bf032f6b1e1d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunButton: {fileID: 1693613715}
   gunText: {fileID: 1553391854}
+--- !u!114 &1243298287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243298281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 450a26f775172a349b754e0af23ba905, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalButtons: 1
 --- !u!1 &1308825357
 GameObject:
   m_ObjectHideFlags: 0
@@ -2435,6 +2469,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2114955585}
+        m_MethodName: Select
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1693613710}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1693613713
@@ -2487,6 +2543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explanationUpgrade: {fileID: 1415118997}
+  playerUpgrade: {fileID: 0}
 --- !u!114 &1937979928 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 983993275784871357, guid: f670cbd03f35bb443b6c8ee3fd867415,
@@ -2645,3 +2702,88 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explanationUpgrade: {fileID: 965492407}
+  playerUpgrade: {fileID: 11400000, guid: 58f98b13da80291479bfce3e766fcfa9, type: 2}
+--- !u!1001 &2132466063
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8593045706911710754, guid: f885d2560f5906c4c921cf7811db2232,
+        type: 3}
+      propertyPath: m_Name
+      value: moni_system
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593045706911710783, guid: f885d2560f5906c4c921cf7811db2232,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593045706911710783, guid: f885d2560f5906c4c921cf7811db2232,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593045706911710783, guid: f885d2560f5906c4c921cf7811db2232,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593045706911710783, guid: f885d2560f5906c4c921cf7811db2232,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593045706911710783, guid: f885d2560f5906c4c921cf7811db2232,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593045706911710783, guid: f885d2560f5906c4c921cf7811db2232,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593045706911710783, guid: f885d2560f5906c4c921cf7811db2232,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593045706911710783, guid: f885d2560f5906c4c921cf7811db2232,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593045706911710783, guid: f885d2560f5906c4c921cf7811db2232,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593045706911710783, guid: f885d2560f5906c4c921cf7811db2232,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593045706911710783, guid: f885d2560f5906c4c921cf7811db2232,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593045706911710783, guid: f885d2560f5906c4c921cf7811db2232,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593045706911710783, guid: f885d2560f5906c4c921cf7811db2232,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593045706911710783, guid: f885d2560f5906c4c921cf7811db2232,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 100
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f885d2560f5906c4c921cf7811db2232, type: 3}
