@@ -63,9 +63,19 @@ public class Bullet : MonoBehaviour
             {
                 return;
             }
+            else if (other.tag == "Wall")
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                Debug.Log("Bullet collided with: " + other.gameObject.name);
+            }
 
-            Destroy(gameObject);
-        }
+
+
+
+            }
     }
     private void OnCollisionEnter(Collision collision)
     {

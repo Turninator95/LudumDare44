@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: MiddleClassMom
   m_EditorClassIdentifier: 
   difficultyLevel: 1
-  playerInitialAmmo: 10
-  playerMaxAmmo: 15
+  playerInitialAmmo: 8
+  playerMaxAmmo: 8
