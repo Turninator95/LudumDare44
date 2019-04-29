@@ -728,6 +728,16 @@ PrefabInstance:
       propertyPath: m_text
       value: Trustfund Baby
       objectReference: {fileID: 0}
+    - target: {fileID: 5436770956197877717, guid: b5f2990663d6d9c4395f6fa0438974c3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5436770957082998518, guid: b5f2990663d6d9c4395f6fa0438974c3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -125
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5f2990663d6d9c4395f6fa0438974c3, type: 3}
 --- !u!114 &5436770956178917460 stripped

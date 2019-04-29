@@ -168,5 +168,14 @@ public class Enemy : MonoBehaviour
         actionTimeout = rageActionTimeout;
         movementSpeed = rageMovementSpeed;
         currentAmmo = ragemodeAmmo;
+
+        foreach (SpriteRenderer spriteRenderer in GetComponentsInChildren<SpriteRenderer>())
+        {
+            if (spriteRenderer.name == "EnemySprite")
+            {
+                spriteRenderer.color = Color.red;
+                break;
+            }
+        }
     }
 }
